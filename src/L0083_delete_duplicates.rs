@@ -10,7 +10,7 @@
 输入: 1->1->2->3->3
 输出: 1->2->3
 */
-use crate::share;
+use crate::share::build_list_node;
 use crate::share::ListNode;
 struct Solution {}
 impl Solution {
@@ -36,11 +36,11 @@ mod tests {
     use super::*;
     #[test]
     fn it_works() {
-        let l1 = share::buildListNode(&vec![2, 3, 3, 4]);
-        let l2 = share::buildListNode(&vec![2, 3, 4]);
+        let l1 = build_list_node(&vec![2, 3, 3, 4]);
+        let l2 = build_list_node(&vec![2, 3, 4]);
         assert_eq!(l2, Solution::delete_duplicates(l1));
-        let l1 = share::buildListNode(&vec![5]);
-        let l2 = share::buildListNode(&vec![5]);
+        let l1 = build_list_node(&vec![5]);
+        let l2 = build_list_node(&vec![5]);
         assert_eq!(l2, Solution::delete_duplicates(l1))
     }
 }

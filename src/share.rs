@@ -12,7 +12,7 @@ impl ListNode {
     }
 }
 
-pub fn buildListNode(v: &Vec<i32>) -> Option<Box<ListNode>> {
+pub fn build_list_node(v: &Vec<i32>) -> Option<Box<ListNode>> {
     let mut head = Some(Box::new(ListNode::new(0)));
     let mut current = head.as_mut();
     for i in v {
