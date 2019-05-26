@@ -13,7 +13,6 @@ impl Solution {
     pub fn remove_elements(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
         let mut head = head;
         let mut current = head.as_mut();
-        let i = 0;
 
         while current.is_some() && current.as_ref().unwrap().next.is_some() {
             if current.as_ref().unwrap().val == current.as_ref().unwrap().next.as_ref().unwrap().val
