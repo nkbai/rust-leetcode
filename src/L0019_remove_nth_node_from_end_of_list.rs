@@ -48,6 +48,35 @@ impl Solution {
         }
         h
     }
+    pub fn remove_nth_from_end2(head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
+        let mut result = Some(Box::new(ListNode::new(0)));
+        let mut iter = &mut result;
+        let mut left = &head;
+        let mut right = &head;
+        let mut n = n;
+
+        while right.is_some() {
+            if n > 0 {
+                n -= 1;
+            } else {
+                iter.as_mut().unwrap().next =
+                    Some(Box::new(ListNode::new(left.as_ref().unwrap().val)));
+                iter = &mut iter.as_mut().unwrap().next;
+                left = &left.as_ref().unwrap().next;
+            }
+            right = &right.as_ref().unwrap().next;
+        }
+
+        left = &left.as_ref().unwrap().next;
+
+        while left.is_some() {
+            iter.as_mut().unwrap().next = Some(Box::new(ListNode::new(left.as_ref().unwrap().val)));
+            iter = &mut iter.as_mut().unwrap().next;
+            left = &left.as_ref().unwrap().next;
+        }
+
+        result.unwrap().next
+    }
 }
 
 #[cfg(test)]
