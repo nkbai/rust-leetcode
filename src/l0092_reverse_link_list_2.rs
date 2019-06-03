@@ -39,13 +39,20 @@ impl Solution {
                     rhead = rhead.unwrap().next.as_mut();
                     cnt += 1;
                 }
-                let rstart = start.as_mut();
-                while start.is_some() {
-                    rr.as_mut().unwrap().next =
-                        Some(Box::new(ListNode::new(start.as_ref().unwrap().val)));
-                    rr = rr.unwrap().next.as_mut();
-                    start = start.unwrap().next.take();
+                if start.is_some() {
+                    rr.as_mut().unwrap().next = start;
                 }
+                //rr移动到最后
+                while rr.as_ref().unwrap().next.is_some() {
+                    rr = rr.unwrap().next.as_mut();
+                }
+                //剩下反复构造的节点的成本
+                //                while start.is_some() {
+                //                    rr.as_mut().unwrap().next =
+                //                        Some(Box::new(ListNode::new(start.as_ref().unwrap().val)));
+                //                    rr = rr.unwrap().next.as_mut();
+                //                    start = start.unwrap().next.take();
+                //                }
             }
             if rhead.is_none() {
                 break;

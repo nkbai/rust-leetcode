@@ -12,11 +12,11 @@
 ]
 */
 
-struct Solution {}
-enum Res {
-    Symmetry(String),
-    Asymmetry(String),
-}
+//struct Solution {}
+//enum Res {
+//    Symmetry(String),
+//    Asymmetry(String),
+//}
 //impl Solution {
 //    fn generate_internal(n: i32) -> Vec<Res> {
 //        if n >= 1 {

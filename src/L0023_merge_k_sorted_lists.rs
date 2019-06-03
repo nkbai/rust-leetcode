@@ -1,4 +1,3 @@
-use crate::share::build_list_node;
 use crate::share::ListNode;
 use std::collections::BinaryHeap;
 
@@ -37,6 +36,7 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::share::build_list_node;
     #[test]
     fn test_merge_k_sorted_lists() {
         /*

@@ -6,11 +6,11 @@
 输入: 1->2->6->3->4->5->6, val = 6
 输出: 1->2->3->4->5
 */
-use crate::share::build_list_node;
+
 use crate::share::ListNode;
 struct Solution {}
 impl Solution {
-    pub fn remove_elements(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
+    pub fn remove_elements(head: Option<Box<ListNode>>, _val: i32) -> Option<Box<ListNode>> {
         let mut head = head;
         let mut current = head.as_mut();
 
@@ -30,6 +30,7 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::share::build_list_node;
     #[test]
     fn it_works() {
         let l1 = build_list_node(&vec![2, 3, 3, 4]);

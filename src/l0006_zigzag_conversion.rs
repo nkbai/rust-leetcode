@@ -34,7 +34,7 @@ impl Solution {
             return s;
         }
         let lens = s.len();
-        let mut s = s.as_bytes();
+        let s = s.as_bytes();
         let mut s2 = String::new();
         let n = num_rows as usize;
         let t = n - 1;

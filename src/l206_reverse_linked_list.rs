@@ -46,7 +46,7 @@ impl Solution {
                 }));
                 Solution::reverseListRecursive(val.next, result)
             }
-            Nil => result,
+            None => result,
         }
     }
     fn reverseListFor(

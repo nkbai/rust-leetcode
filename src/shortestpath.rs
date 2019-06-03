@@ -12,7 +12,7 @@ struct State {
 }
 impl Ord for State {
     fn cmp(&self, other: &Self) -> Ordering {
-        other.cmp(&self)
+        other.cost.cmp(&self.cost)
     }
 }
 impl PartialOrd for State {

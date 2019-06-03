@@ -12,7 +12,6 @@
 原因：342 + 465 = 807
 */
 
-use crate::share::build_list_node;
 use crate::share::ListNode;
 
 struct Solution {}
@@ -50,6 +49,7 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::share::build_list_node;
     #[test]
     fn test_sum() {
         let l1 = build_list_node(&vec![2, 4, 3]);

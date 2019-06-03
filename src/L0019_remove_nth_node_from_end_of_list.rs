@@ -14,7 +14,7 @@
 
 你能尝试使用一趟扫描实现吗？
 */
-use crate::share::build_list_node;
+
 use crate::share::ListNode;
 struct Solution {}
 impl Solution {
@@ -82,6 +82,7 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::share::build_list_node;
     #[test]
     fn test_remove_nth_from_end() {
         let l1 = build_list_node(&vec![1, 2, 3, 4, 5]);
@@ -89,6 +90,6 @@ mod tests {
         assert_eq!(l2, Solution::remove_nth_from_end(l1, 2));
         let l1 = build_list_node(&vec![1, 2, 3, 4, 5]);
         let l2 = build_list_node(&vec![1, 2, 3, 4]);
-        assert_eq!(l2, Solution::remove_nth_from_end(l1, 1));
+        assert_eq!(l2, Solution::remove_nth_from_end2(l1, 1));
     }
 }

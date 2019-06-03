@@ -6,7 +6,7 @@
 输入：1->2->4, 1->3->4
 输出：1->1->2->3->4->4
 */
-use crate::share::build_list_node;
+
 use crate::share::ListNode;
 struct Solution {}
 impl Solution {
@@ -97,6 +97,7 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::share::build_list_node;
     #[test]
     fn test_merge_two_lists() {
         let l1 = build_list_node(&vec![2, 3, 4]);
@@ -106,6 +107,6 @@ mod tests {
         let l1 = build_list_node(&vec![5]);
         let l2 = build_list_node(&vec![5, 7]);
         let l3 = build_list_node(&vec![5, 5, 7]);
-        assert_eq!(l3, Solution::merge_two_lists(l1, l2))
+        assert_eq!(l3, Solution::merge_two_lists_2(l1, l2))
     }
 }
