@@ -5,3 +5,9 @@ authors = ["bai <nkbai@163.com>"]
 edition = "2018"
 
 [dependencies]
+threadpool="1.7.1"
+scoped_threadpool="0.1.9"
+parking_lot="0.8.0"
+crossbeam="0.7.1"
+crossbeam-channel="0.3.8"
+rand = "0.6.0"

@@ -39,7 +39,7 @@ pub fn build_list_node(v: &Vec<i32>) -> Option<Box<ListNode>> {
 }
 
 // Definition for a binary tree node.
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub struct TreeNode {
     pub val: i32,
     pub left: Option<Rc<RefCell<TreeNode>>>,

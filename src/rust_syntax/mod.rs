@@ -1,1 +1,14 @@
+mod catch_unwind;
+mod crossbeam;
+mod dynmod;
+mod generator;
+mod lifetime;
 mod memory_leak;
+mod myown_swap;
+mod nibian;
+mod parking_lot;
+mod scoped_threadpool;
+mod test;
+mod thread;
+mod threadpool;
+mod vec;
