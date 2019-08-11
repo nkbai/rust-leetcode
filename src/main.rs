@@ -1,3 +1,6 @@
+#[macro_use]
+extern crate foreign_types;
+
 mod L0001_two_sum;
 mod L0002_add_two_numbers;
 mod L0009_palindrome_number;
@@ -25,12 +28,17 @@ mod l0092_reverse_link_list_2;
 mod l0095_unique_binary_search_trees;
 mod l0096_unique_binary_search_tree;
 mod l0328_odd_even_linked_list;
+mod l032_longest_valid_parentheses;
+mod l060_permutation_sequence;
+mod l098_validate_bst;
 mod l1042_flower_planting_with_no_adjacent;
 mod l109_convert_sorted_list_to_binary;
 mod l206_reverse_linked_list;
 mod l222_count_complete_tree_nodes;
 mod l380_insert_delete_getrandom_o1;
 mod l622_design_circular_queue;
+mod l641_design_circular_deque;
+mod L0094_binary_tree_inorder_traversal;
 mod queue;
 mod rust_syntax;
 mod share;

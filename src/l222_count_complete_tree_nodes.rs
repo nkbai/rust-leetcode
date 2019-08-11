@@ -36,19 +36,67 @@ https://leetcode-cn.com/problems/count-complete-tree-nodes/
 use crate::share::TreeNode;
 use core::borrow::Borrow;
 use std::cell::RefCell;
+use std::f32;
 use std::rc::Rc;
 struct Solution {}
 impl Solution {
     pub fn count_nodes(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-        0
+        let mut root = root;
+        let mut lastnum = 0;
+        let mut height = 0;
+        if root.is_none() {
+            return 0;
+        }
+        while let Some(r) = root {
+            let hl = Solution::treeHeight(r.as_ref().clone().borrow().left.clone());
+            let hr = Solution::treeHeight(r.as_ref().clone().borrow().right.clone());
+            if hl == 0 {
+                break; //走到底了
+            }
+            if hl == hr {
+                //说明满二叉树缺的部分肯定在右边
+                root = r.as_ref().clone().borrow().right.clone();
+                lastnum = 2 * lastnum + 1;
+            } else {
+                root = r.as_ref().clone().borrow().left.clone();
+                lastnum = 2 * lastnum;
+            }
+            height += 1;
+        }
+        2.0_f32.powi(height) as i32 + lastnum
     }
-    pub fn treeHeight(root: &Option<Rc<RefCell<TreeNode>>>) -> i32 {
+    pub fn treeHeight(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         let mut root = root;
         let mut height = 0;
-        //        if let Some(ref r) = root {
-        //            height += 1;
-        //            root = &r.borrow().borrow().left
-        //        }
+        while let Some(r) = root {
+            height += 1;
+            root = r.as_ref().clone().borrow().left.clone();
+        }
         return height;
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use crate::share::build_tree;
+    use crate::share::NULL;
+    #[test]
+    fn test_count_nodes() {
+        let t = build_tree(&vec![1]);
+        assert_eq!(1, Solution::count_nodes(t));
+        let t = build_tree(&vec![]);
+        assert_eq!(0, Solution::count_nodes(t));
+        let t = build_tree(&vec![1, 2]);
+        assert_eq!(2, Solution::count_nodes(t));
+        let t = build_tree(&vec![1, 2, 3]);
+        assert_eq!(3, Solution::count_nodes(t));
+        let t = build_tree(&vec![1, 2, 3, 4]);
+        println!("t={:?}", t);
+        assert_eq!(4, Solution::count_nodes(t));
+        let t = build_tree(&vec![1, 2, 3, 4, 5]);
+        assert_eq!(5, Solution::count_nodes(t));
+        let t = build_tree(&vec![1, 2, 3, 4, 5, 6]);
+        assert_eq!(6, Solution::count_nodes(t));
     }
 }

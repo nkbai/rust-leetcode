@@ -64,7 +64,7 @@ fn build_tree_helper(i: usize, v: &Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
     if i >= v.len() {
         return None;
     }
-    if v[i] == std::i32::MIN {
+    if v[i] == NULL {
         return None;
     }
     let left = build_tree_helper(2 * i + 1, v);
