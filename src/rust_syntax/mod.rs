@@ -1,6 +1,7 @@
 mod catch_unwind;
 mod crossbeam;
 mod dynmod;
+mod escape;
 mod foreigntypes;
 mod foreigntypes_1;
 mod generator;
