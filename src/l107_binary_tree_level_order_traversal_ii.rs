@@ -1,31 +1,31 @@
 /*
-102. 二叉树的层次遍历
-给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。
-```
-例如:
-给定二叉树: [3,9,20,null,null,15,7],
+https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/
+107. 二叉树的层次遍历 II
+给定一个二叉树，返回其节点值自底向上的层次遍历。 （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历）
+
+例如：
+给定二叉树 [3,9,20,null,null,15,7],
 
     3
    / \
   9  20
     /  \
    15   7
-返回其层次遍历结果：
+返回其自底向上的层次遍历为：
 
 [
-  [3],
+  [15,7],
   [9,20],
-  [15,7]
+  [3]
 ]
-```
+
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/binary-tree-level-order-traversal
+链接：https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 /*
-思路,非常比较直观
-使用Vec<Vec<TreeNode>>辅助遍历
-使用Vec<Vec<i32>>保存结果
+思路:
+这个题目和102一样,只不过是需要逆序保存结果而已
 */
 
 use crate::share::TreeNode;
@@ -33,7 +33,7 @@ use std::cell::RefCell;
 use std::rc::Rc;
 struct Solution {}
 impl Solution {
-    pub fn level_order(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
+    pub fn level_order_bottom(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
         let mut r = Vec::new();
         let mut h = Vec::new();
         if root.is_none() {
@@ -61,7 +61,7 @@ impl Solution {
             if !vh2.is_empty() {
                 h.push(vh2);
             }
-            r.push(vr);
+            r.insert(0, vr);
         }
         r
     }
@@ -71,10 +71,10 @@ mod test {
     use super::*;
     use crate::share::*;
     #[test]
-    fn test_level_order() {
+    fn test_level_order_bottom() {
         assert_eq!(
-            Solution::level_order(build_tree(&vec![3, 9, 20, NULL, NULL, 15, 7])),
-            vec![vec![3], vec![9, 20], vec![15, 7],]
+            Solution::level_order_bottom(build_tree(&vec![3, 9, 20, NULL, NULL, 15, 7])),
+            vec![vec![15, 7], vec![9, 20], vec![3],]
         );
     }
 }
