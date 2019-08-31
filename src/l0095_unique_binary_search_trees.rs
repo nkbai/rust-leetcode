@@ -93,9 +93,10 @@ impl Solution {
 
 #[cfg(test)]
 mod test {
+    #[warn(unused_imports)]
     use super::*;
-    use crate::share::build_tree;
-    use crate::share::NULL;
+    //    use crate::share::build_tree;
+    //    use crate::share::NULL;
     #[test]
     fn test_generate() {
         //        assert_eq!(vec![build_tree(&vec![1])], Solution::generate_trees(1));

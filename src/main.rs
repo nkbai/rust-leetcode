@@ -1,4 +1,5 @@
 #[macro_use]
+#[allow(unused)]
 extern crate foreign_types;
 
 mod L0001_two_sum;
@@ -29,10 +30,12 @@ mod l0092_reverse_link_list_2;
 mod l0095_unique_binary_search_trees;
 mod l0096_unique_binary_search_tree;
 mod l0145_binary_tree_postorder_traversal;
+mod l029_divide_two_integers;
 mod l0328_odd_even_linked_list;
 mod l032_longest_valid_parentheses;
 mod l060_permutation_sequence;
 mod l098_validate_bst;
+mod l102_binary_tree_level_order_traversal;
 mod l1042_flower_planting_with_no_adjacent;
 mod l105_construct_binary_tree_from_preorder_andinorder;
 mod l106_construct_binary_tree_from_inorder_and_postorder;
@@ -49,6 +52,8 @@ mod l402_remove_k_digits;
 mod l622_design_circular_queue;
 mod l641_design_circular_deque;
 mod l704_binary_search;
+mod l713_subarray_product_less_than_k;
+mod l925_long_pressed_name;
 mod queue;
 mod rust_syntax;
 mod share;

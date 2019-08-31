@@ -7,8 +7,6 @@ fn catch_unwind() {
     panic::catch_unwind(move || {
         x.push(10);
 
-        panic!("user panic");
-
         y.push(100);
     })
     .ok();

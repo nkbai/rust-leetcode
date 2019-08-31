@@ -34,9 +34,7 @@ https://leetcode-cn.com/problems/count-complete-tree-nodes/
 3. 统计该层我的编号(从0起),如果上一层我的编号是3,那么下一层如果走左边我的编号就是2*3,走右边我的编号就是2*3+1
 */
 use crate::share::TreeNode;
-use core::borrow::Borrow;
 use std::cell::RefCell;
-use std::f32;
 use std::rc::Rc;
 struct Solution {}
 impl Solution {
@@ -80,7 +78,6 @@ impl Solution {
 mod test {
     use super::*;
     use crate::share::build_tree;
-    use crate::share::NULL;
     #[test]
     fn test_count_nodes() {
         let t = build_tree(&vec![1]);

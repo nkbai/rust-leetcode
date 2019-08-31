@@ -42,22 +42,14 @@ circularDeque.getFront();				// 返回 4
 
 /*
 思路:
-用数组来实现
-front:表示头部可插入位置,里面可能有效数据也可能是无效数据
-end:表示尾部可插入位置,里面可能有有效数据也可能无有效数据
-full:表示当前是否已经填满,因为空和满对应的都是front==end
-//todo 想不明白,暂时放弃吧.
+用Vec来实现即可
 */
-use std::collections::LinkedList;
+
 struct MyCircularDeque {
     v: Vec<i32>,
-    k: usize,
-    front: usize,
-    back: usize,
-    full: bool, //当前是否已经填充满
+    k: usize, //最大容量
 }
 
-const Invalid: i32 = -1;
 /**
  * `&self` means the method takes an immutable reference.
  * If you need a mutable reference, change it to `&mut self` instead.
@@ -66,16 +58,7 @@ impl MyCircularDeque {
     /** Initialize your data structure here. Set the size of the deque to be k. */
     fn new(k: i32) -> Self {
         let k = k as usize;
-        let mut m = MyCircularDeque {
-            v: vec![Invalid; k],
-            k,
-            front: 0,
-            back: 0,
-            full: false,
-        };
-        if m.k == 0 {
-            m.full = true
-        }
+        let mut m = MyCircularDeque { v: Vec::new(), k };
         return m;
     }
     /** Adds an item at the front of Deque. Return true if the operation is successful. */
@@ -83,12 +66,7 @@ impl MyCircularDeque {
         if self.is_full() {
             return false;
         }
-        self.v[self.front] = value;
-        if self.front > 0 {
-            self.front -= 1;
-        } else {
-            self.front = self.k - 1;
-        }
+        self.v.insert(0, value);
         true
     }
 
@@ -97,12 +75,7 @@ impl MyCircularDeque {
         if self.is_full() {
             return false;
         }
-        self.v[self.back] = value;
-        self.back += 1;
-        if self.back >= self.k {
-            self.back = 0;
-        }
-
+        self.v.push(value);
         true
     }
 
@@ -111,11 +84,7 @@ impl MyCircularDeque {
         if self.is_empty() {
             return false;
         }
-        self.front += 1; //不用释放空间
-        if self.front >= self.k - 1 {
-            self.front = 0;
-        }
-        self.v[self.front] = Invalid; //置为无效数据
+        self.v.remove(0);
         true
     }
 
@@ -124,12 +93,7 @@ impl MyCircularDeque {
         if self.is_empty() {
             return false;
         }
-        if self.back > 0 {
-            self.back -= 1;
-        } else {
-            self.back = self.k - 1;
-        }
-        self.v[self.back] = Invalid;
+        self.v.remove(self.v.len() - 1);
         true
     }
 
@@ -138,14 +102,7 @@ impl MyCircularDeque {
         if self.is_empty() {
             return -1;
         }
-        if self.is_full() {}
-        let mut b = self.front;
-        if b >= self.k - 1 {
-            b = 0;
-        } else {
-            b += 1;
-        }
-        return self.v[b];
+        return self.v[0];
     }
 
     /** Get the last item from the deque. */
@@ -153,29 +110,18 @@ impl MyCircularDeque {
         if self.is_empty() {
             return -1;
         }
-        let mut b = self.back;
-        if b > 0 {
-            b -= 1;
-        } else {
-            b = self.k - 1;
-        }
-        return self.v[b];
+
+        return self.v[self.v.len() - 1];
     }
 
     /** Checks whether the circular deque is empty or not. */
     fn is_empty(&self) -> bool {
-        if self.back != self.front {
-            return false;
-        }
-        return !self.full;
+        return self.v.len() == 0;
     }
 
     /** Checks whether the circular deque is full or not. */
     fn is_full(&self) -> bool {
-        if self.back != self.front {
-            return false;
-        }
-        return self.full;
+        return self.v.len() == self.k;
     }
 }
 
@@ -202,8 +148,6 @@ mod test {
         assert_eq!(true, obj.insert_last(2));
         assert_eq!(true, obj.delete_front());
         assert_eq!(true, obj.delete_last());
-        assert_eq!(0, obj.front);
-        assert_eq!(0, obj.back);
 
         let mut obj = MyCircularDeque::new(3);
         obj.insert_front(3);

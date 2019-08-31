@@ -71,7 +71,7 @@ impl Solution {
         k: usize,
         result: &mut Vec<usize>,
     ) {
-        assert!(!left.is_empty(), panic!("left empty"));
+        assert!(!left.is_empty(), "left empty");
         if k == 0 {
             result.extend(left);
             return;
@@ -82,7 +82,7 @@ impl Solution {
         let item = pmap.get(&(left.len() - 1)).unwrap();
         let mut first = k / *item;
         let mut index = k % *item;
-        assert!(!(first >= left.len()), panic!("k is too large"));
+        assert!(!(first >= left.len()), "k is too large");
 
         //        移除最高位
         let high = left.remove(first);

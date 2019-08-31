@@ -49,8 +49,6 @@ impl Solution {
                         longest = &ss[i..(i + k + 1)]; //包含最后一位
                     }
                 } else {
-                    let s = i + 1;
-                    let e = i + k - 1;
                     if i + 1 >= m.len() || i + k >= m.len() {
                         continue; //越界的不考虑
                     }
@@ -109,7 +107,7 @@ impl Solution {
         };
 
         let mut cur_pos = (0_usize, 0_usize);
-        let mut cur_len = 0_usize;
+        let mut cur_len;
         let mut max_pos = (0_usize, 0_usize);
         let mut max_len = 0_usize;
         let poses = Solution::pre_prase(s.clone()).into_iter();
@@ -168,7 +166,7 @@ mod test {
         assert_eq!(Solution::longest_palindrome(String::from("")), "");
         assert_eq!(
             Solution::longest_palindrome2(String::from("abbbbbbbbbbbbbbbcd")),
-            "bb"
+            "bbbbbbbbbbbbbbb"
         );
     }
 }

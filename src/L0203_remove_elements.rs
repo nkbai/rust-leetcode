@@ -10,20 +10,25 @@
 use crate::share::ListNode;
 struct Solution {}
 impl Solution {
-    pub fn remove_elements(head: Option<Box<ListNode>>, _val: i32) -> Option<Box<ListNode>> {
+    pub fn remove_elements(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
         let mut head = head;
+        let mut prev = Some(Box::new(ListNode { val: 0, next: None }));
         let mut current = head.as_mut();
 
         while current.is_some() && current.as_ref().unwrap().next.is_some() {
-            if current.as_ref().unwrap().val == current.as_ref().unwrap().next.as_ref().unwrap().val
-            {
+            println!("current={:?}", current);
+            if current.as_ref().unwrap().next.as_ref().unwrap().val == val {
                 let next = current.as_mut().unwrap().next.as_mut().unwrap().next.take();
                 current.as_mut().unwrap().next = next;
             } else {
                 current = current.unwrap().next.as_mut();
             }
         }
-        head
+        if head.as_ref().unwrap().val == val {
+            return head.unwrap().next;
+        } else {
+            return head;
+        }
     }
 }
 
@@ -35,6 +40,11 @@ mod tests {
     fn it_works() {
         let l1 = build_list_node(&vec![2, 3, 3, 4]);
         let l2 = build_list_node(&vec![2, 4]);
+        //        println!(
+        //            "l2={:?},\nremove l1={:?}",
+        //            l2,
+        //            Solution::remove_elements(l1, 3)
+        //        );
         assert_eq!(l2, Solution::remove_elements(l1, 3));
         let l1 = build_list_node(&vec![5]);
         assert_eq!(None, Solution::remove_elements(l1, 5))
