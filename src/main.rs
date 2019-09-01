@@ -29,6 +29,7 @@ mod l0091_decode_ways;
 mod l0092_reverse_link_list_2;
 mod l0095_unique_binary_search_trees;
 mod l0096_unique_binary_search_tree;
+mod l0099_restore_binary_search_tree;
 mod l0145_binary_tree_postorder_traversal;
 mod l029_divide_two_integers;
 mod l0328_odd_even_linked_list;
