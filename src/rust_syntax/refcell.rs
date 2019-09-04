@@ -1,5 +1,4 @@
 use std::cell::RefCell;
-use std::ops::Add;
 fn main() {
     let shared_vec = RefCell::new(vec![1, 2, 3]);
     let shared1 = &shared_vec;

@@ -47,7 +47,6 @@ randomSet.getRandom();
 extern crate rand;
 use rand::Rng;
 use std::collections::HashMap;
-use std::collections::HashSet;
 struct RandomizedSet {
     m: HashMap<i32, usize>,
     v: Vec<i32>,

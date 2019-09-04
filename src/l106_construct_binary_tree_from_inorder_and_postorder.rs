@@ -49,7 +49,7 @@ https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorde
 //     }
 //   }
 // }
-use crate::share::{build_tree, TreeNode};
+use crate::share::TreeNode;
 use std::cell::RefCell;
 use std::rc::Rc;
 struct Solution {}
@@ -92,7 +92,6 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::share;
     use crate::share::build_tree;
     use crate::share::NULL;
 

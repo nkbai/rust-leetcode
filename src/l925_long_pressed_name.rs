@@ -82,7 +82,6 @@ impl Solution {
                 ti += 1; //移动尽可能多的
             }
         }
-        return true;
     }
 }
 #[cfg(test)]
