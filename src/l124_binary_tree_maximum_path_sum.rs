@@ -70,8 +70,8 @@ impl Solution {
         return 0;
     }
     /*
-    第一个整数: 经过当前节点的最大路径和
-    第二个整数:整棵树的最大路径和
+    第一个整数: 经过当前节点的最大路径和,可以继续走下去
+    第二个整数:整棵树的最大路径和,不能再继续走下去了
     */
     fn internal(root: Option<Rc<RefCell<TreeNode>>>) -> Option<(i32, i32)> {
         if root.is_none() {
@@ -81,6 +81,7 @@ impl Solution {
         let rv = r.borrow().val;
         let mut total_max = rv;
         let mut cur_max = rv;
+
         /*
         叶节点,就是他自己了
         */
@@ -90,21 +91,50 @@ impl Solution {
         let lx = Solution::internal(r.borrow().left.clone());
         let rx = Solution::internal(r.borrow().right.clone());
         match (lx, rx) {
-            /*
-            左右子树都有
-            先求出经过自己的最大路径和,如果超过左右子树的所有节点最大路径和,就更新所有节点最大路径和
-            */
             (Some(l), Some(r)) => {
-                if l.0 >= 0 {
-                    cur_max += l.0;
+                /*
+                左右子树都有
+                先求出经过自己的最大路径和(只能左右选择一个)
+                */
+                let mut w_total_max = 0; //经过我自己和两颗子树的尽可能大的那种情况
+                if cur_max >= 0 {
+                    w_total_max = cur_max;
+                    if l.0 >= 0 {
+                        w_total_max += l.0;
+                    }
+                    if r.0 >= 0 {
+                        w_total_max += r.0;
+                    }
+                } else {
+                    /*
+                    自身小于0,那么经过我自己和两棵子树的所有可能最大值,
+                    要区分两种情况:
+                    1. 经过自己
+                    2. 不经过自己
+                    */
+
+                    let not_contain_self = max(l.0, r.0);
+                    let mut contain_self = rv;
+                    if l.0 >= 0 {
+                        contain_self += l.0;
+                    }
+                    if r.0 >= 0 {
+                        contain_self += r.0;
+                    }
+                    w_total_max = max(not_contain_self, contain_self);
                 }
-                if r.0 >= 0 {
-                    cur_max += r.0;
+
+                //经过自身,可以继续走下去的那条路径
+                let lr_max = max(l.0, r.0);
+                if lr_max >= 0 {
+                    cur_max += lr_max;
                 }
+                /*
+                到root为止,最大可能的路径和,不关心是否经过root,
+                l.1,r.1都是不能继续走下去的路径
+                */
                 total_max = max(l.1, r.1);
-                if cur_max > total_max {
-                    total_max = cur_max;
-                }
+                total_max = max(total_max, w_total_max);
             }
             //只有左子树,道理同上
             (Some(l), None) => {
@@ -129,7 +159,34 @@ impl Solution {
             //没有子树,那么所有节点最大值和当前节点最大值就是他自身
             (None, None) => {}
         }
+        println!(
+            "r={:?},cur_max={},total_max={}",
+            r.borrow().val,
+            cur_max,
+            total_max
+        );
         return Some((cur_max, total_max));
+    }
+
+    pub fn max_path_sum2(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+        let mut max = -9999999;
+        Self::traverse(root, &mut |x: i32| {
+            max = max.max(x);
+        });
+        println!("{:?}", max);
+        max
+    }
+
+    fn traverse(root: Option<Rc<RefCell<TreeNode>>>, f: &mut impl FnMut(i32)) -> i32 {
+        if root.is_none() {
+            return 0;
+        }
+        let mut r_b = root.as_ref().unwrap().borrow_mut();
+        let (l, r) = (r_b.left.take(), r_b.right.take());
+        let (lval, rval) = (Self::traverse(l, f).max(0), Self::traverse(r, f).max(0));
+        let cur_path_max = lval + rval + r_b.val;
+        f(cur_path_max);
+        (lval + r_b.val).max(rval + r_b.val)
     }
 }
 #[cfg(test)]
@@ -154,6 +211,48 @@ mod test {
 
         let t = build_tree(&vec![5, 4, 8, 11, NULL, 13, 4, 7, 2, NULL, NULL, NULL, 1]);
         println!("t={:?}", t);
-        assert_eq!(42, Solution::max_path_sum(t));
+        assert_eq!(49, Solution::max_path_sum(t));
+
+        let t = build_tree(&vec![
+            5, 4, 8, 11, NULL, 13, 4, 7, 2, NULL, NULL, NULL, NULL, NULL, 1,
+        ]);
+        println!("t={:?}", t);
+        assert_eq!(48, Solution::max_path_sum(t));
+        let t = TreeNode {
+            val: -1,
+            left: Some(Rc::new(RefCell::new(TreeNode {
+                val: 8,
+                left: None,
+                right: Some(Rc::new(RefCell::new(TreeNode {
+                    val: -9,
+                    left: None,
+                    right: None,
+                }))),
+            }))),
+            right: Some(Rc::new(RefCell::new(TreeNode {
+                val: 2,
+                right: None,
+                left: Some(Rc::new(RefCell::new(TreeNode {
+                    val: 0,
+                    right: None,
+                    left: Some(Rc::new(RefCell::new(TreeNode {
+                        val: -3,
+                        left: None,
+                        right: Some(Rc::new(RefCell::new(TreeNode {
+                            val: -9,
+                            left: None,
+                            right: Some(Rc::new(RefCell::new(TreeNode {
+                                val: -2,
+                                left: None,
+                                right: None,
+                            }))),
+                        }))),
+                    }))),
+                }))),
+            }))),
+        };
+        let t = Some(Rc::new(RefCell::new(t)));
+        println!("t={:?}", t);
+        assert_eq!(9, Solution::max_path_sum2(t));
     }
 }
