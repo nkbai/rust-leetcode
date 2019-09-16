@@ -64,6 +64,8 @@ mod l206_reverse_linked_list;
 mod l222_count_complete_tree_nodes;
 mod l226_invert_binary_tree;
 mod l230_kth_smallest_element_in_a_bst;
+mod l257_binary_tree_paths;
+mod l297_serialize_deserialize_binary_tree;
 mod l380_insert_delete_getrandom_o1;
 mod l402_remove_k_digits;
 mod l622_design_circular_queue;
