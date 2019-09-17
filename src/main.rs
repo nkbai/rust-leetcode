@@ -15,6 +15,7 @@ mod L0094_binary_tree_inorder_traversal;
 mod L0203_remove_elements;
 mod L0225_implement_stack_using_queue;
 mod L997_find_the_town_judge;
+mod l337_house_robber_3l;
 mod l0006_zigzag_conversion;
 mod l0024_swap_nodes_in_pairs;
 mod l0025_reverse_nodes_in_k_group;
