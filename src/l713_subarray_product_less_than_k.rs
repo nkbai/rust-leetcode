@@ -52,7 +52,6 @@ impl Solution {
                 //1特殊处理
                 cnt += cache.len() as i32;
             } else {
-                let l = cache.len();
                 //新来的数字和旧的序列对比,如果超过100,则停止,注意顺序是从大大小
                 let res = cache.binary_search_by(|probe: &i32| match (*probe * cur).cmp(&k) {
                     //不能用除法
@@ -63,12 +62,12 @@ impl Solution {
                 //如果找到,就应该删除的时候包含pos,否则不包含
                 match res {
                     Ok(pos) => {
-                        for h in 0..=pos {
+                        for _ in 0..=pos {
                             cache.remove(0);
                         }
                     }
                     Err(pos) => {
-                        for h in 0..pos {
+                        for _h in 0..pos {
                             cache.remove(0);
                         }
                     }

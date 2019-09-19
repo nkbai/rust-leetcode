@@ -64,11 +64,10 @@
 其他调换
 */
 use crate::share::TreeNode;
-use rand::distributions::uniform::SampleBorrow;
 use std::cell::RefCell;
 use std::rc::Rc;
 struct Solution {}
-struct arg {
+struct Arg {
     first_node: Option<Rc<RefCell<TreeNode>>>,
     second_node: Option<Rc<RefCell<TreeNode>>>,
     pre_node: Option<Rc<RefCell<TreeNode>>>,
@@ -77,7 +76,7 @@ struct arg {
 
 impl Solution {
     //没有self,只好用这种方式来传参数了,比较丑陋
-    fn recover_internal(a: &mut arg, root: &mut Option<Rc<RefCell<TreeNode>>>) {
+    fn recover_internal(a: &mut Arg, root: &mut Option<Rc<RefCell<TreeNode>>>) {
         if root.is_none() {
             return;
         }
@@ -95,7 +94,7 @@ impl Solution {
         Solution::recover_internal(a, &mut r.right)
     }
     pub fn recover_tree(root: &mut Option<Rc<RefCell<TreeNode>>>) {
-        let mut a = arg {
+        let mut a = Arg {
             first_node: None,
             second_node: None,
             pre_node: None,

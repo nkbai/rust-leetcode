@@ -106,7 +106,7 @@ impl Solution {
             _ => (), //什么都不做
         };
 
-        let mut cur_pos = (0_usize, 0_usize);
+        let mut cur_pos;
         let mut cur_len;
         let mut max_pos = (0_usize, 0_usize);
         let mut max_len = 0_usize;
@@ -125,7 +125,7 @@ impl Solution {
             } else {
                 length - cur_pos.1 - 1
             };
-            let mut ml = ml + 1;
+            let ml = ml + 1;
             //            println!("cur_pos {:?}, mml {}",cur_pos,ml);
             //这个思路好处就是他并不是以字符为单位向左右展开,而是以字符串为单位向左右展开,节省了重复遍历的时间
             //相当于一种改进的从中间向两边扩展的情形

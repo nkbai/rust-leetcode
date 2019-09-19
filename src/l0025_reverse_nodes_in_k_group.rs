@@ -42,7 +42,7 @@ impl Solution {
                 let mut start = Some(Box::new(ListNode::new(rhead.as_mut().unwrap().val)));
                 rhead = rhead.unwrap().next.as_mut();
                 cnt += 1;
-                let mut cntk: bool;
+                let cntk: bool;
                 loop {
                     //题目应该确保链表长度大于n
                     if cnt % k == 0 {

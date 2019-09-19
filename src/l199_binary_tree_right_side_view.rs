@@ -41,8 +41,8 @@ impl Solution {
         v.push(root.unwrap().clone());
         h.push(v);
         while !h.is_empty() {
-            let mut vh = h.remove(0); //移除第一个
-                                      //            println!("vh={:?}", vh);
+            let vh = h.remove(0); //移除第一个
+                                  //            println!("vh={:?}", vh);
             let mut vh2 = Vec::new();
             vh.iter().for_each(|t| {
                 //这里不能用map,否则会被优化掉,这里不像h会在访问的过程中被修改,所以适合使用iter而不是while

@@ -75,7 +75,6 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::share::build_list_node;
     use crate::share::build_tree;
     use crate::share::NULL;
     #[test]

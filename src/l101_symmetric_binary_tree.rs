@@ -61,8 +61,8 @@ impl Solution {
         h.push(v);
         while !h.is_empty() {
             let mut vr = Vec::new();
-            let mut vh = h.remove(0); //移除第一个
-                                      //            println!("vh={:?}", vh);
+            let vh = h.remove(0); //移除第一个
+                                  //            println!("vh={:?}", vh);
             let mut vh2 = Vec::new();
             vh.iter().for_each(|t| {
                 //每次都是处理下一层是否对称,当前层能走到,说明已经是对称的了.
@@ -96,9 +96,9 @@ mod test {
     use crate::share::NULL;
     #[test]
     fn test_num_trees() {
-        let mut r = build_tree(&vec![1, 2, 2, 3, 4, 4, 3]);
+        let r = build_tree(&vec![1, 2, 2, 3, 4, 4, 3]);
         assert_eq!(Solution::is_symmetric(r), true);
-        let mut r = build_tree(&vec![1, 2, 2, NULL, 3, NULL, 3]);
+        let r = build_tree(&vec![1, 2, 2, NULL, 3, NULL, 3]);
         assert_eq!(Solution::is_symmetric(r), false);
     }
 }

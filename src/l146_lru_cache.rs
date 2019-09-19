@@ -58,7 +58,7 @@ impl LRUCache {
 
     fn get(&mut self, key: i32) -> i32 {
         match self.map.entry(key) {
-            Entry::Occupied(mut x) => {
+            Entry::Occupied(x) => {
                 for i in 0..self.list.len() {
                     if self.list[i] == key {
                         self.list.remove(i);

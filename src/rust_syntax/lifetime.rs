@@ -47,7 +47,7 @@ fn equallifetime() {
         b.set_ref(&a);
     }
     {
-        let (mut a, b) = (R::new(), T::new());
+        let (mut _a, _b) = (R::new(), T::new());
         //        a.set_ref(&b); //因为'a,'b的生命周期不匹配导致的,两者严格相等,在drop里是不允许的
     }
 }

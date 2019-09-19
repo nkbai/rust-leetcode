@@ -54,7 +54,6 @@
 我们要同时返回任意节点的最大路径和总体最大路径
 注意,因为负值的存在,所以不能认为最小路径是0
 */
-use crate::share::ListNode;
 use crate::share::TreeNode;
 use std::cell::RefCell;
 use std::cmp::max;
@@ -96,7 +95,7 @@ impl Solution {
                 左右子树都有
                 先求出经过自己的最大路径和(只能左右选择一个)
                 */
-                let mut w_total_max = 0; //经过我自己和两颗子树的尽可能大的那种情况
+                let mut w_total_max; //经过我自己和两颗子树的尽可能大的那种情况
                 if cur_max >= 0 {
                     w_total_max = cur_max;
                     if l.0 >= 0 {

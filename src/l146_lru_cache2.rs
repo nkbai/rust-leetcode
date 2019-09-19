@@ -71,7 +71,7 @@ impl LRUCache {
 
     */
     fn push_back_node(&mut self, key: i32, value: i32) {
-        let mut node = Cache {
+        let node = Cache {
             next: None,
             prev: self.tail,
             value,
@@ -116,7 +116,7 @@ impl LRUCache {
     }
     pub fn get(&mut self, key: i32) -> i32 {
         match self.caches.entry(key) {
-            Entry::Occupied(mut x) => {
+            Entry::Occupied(x) => {
                 /*
                 已经存在的情况下,先移除旧的,然后添加新的到尾部
                 */

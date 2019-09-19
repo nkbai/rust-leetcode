@@ -31,7 +31,6 @@
 1. 使用一个vec来保存路径,真正符合的路径复制一份保存在vec中
 2. 要保存所有的,所以要遍历所有才能完成
 */
-use crate::share::ListNode;
 use crate::share::TreeNode;
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -56,7 +55,7 @@ impl Solution {
             path.push(r.borrow().val);
             sum -= r.borrow().val;
             if r.borrow().left.is_none() && r.borrow().right.is_none() && sum == 0 {
-                let mut v = path.clone();
+                let v = path.clone();
                 //                println!("v={:?}", v);
                 vv.push(v);
                 path.pop();

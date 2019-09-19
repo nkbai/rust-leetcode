@@ -36,8 +36,8 @@ struct Solution {}
 impl Solution {
     pub fn max_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         if let Some(r) = root {
-            let mut left = Solution::max_depth(r.borrow_mut().left.take());
-            let mut right = Solution::max_depth(r.borrow_mut().right.take());
+            let left = Solution::max_depth(r.borrow_mut().left.take());
+            let right = Solution::max_depth(r.borrow_mut().right.take());
             if left > right {
                 return left + 1;
             } else {

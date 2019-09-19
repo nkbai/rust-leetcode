@@ -35,7 +35,7 @@ struct Solution {}
 impl Solution {
     pub fn binary_tree_paths(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<String> {
         let mut v = Vec::new();
-        let mut path = String::new();
+        let path = String::new();
         Self::internal(root, path, &mut |n, p| {
             if p.len() == 0 {
                 *p += n.borrow().val.to_string().as_str();

@@ -36,8 +36,8 @@ impl Solution {
         if let Some(r) = root {
             let hasLeft = r.borrow().left.is_some();
             let hasRight = r.borrow().right.is_some();
-            let mut left = Solution::min_depth(r.borrow_mut().left.take());
-            let mut right = Solution::min_depth(r.borrow_mut().right.take());
+            let left = Solution::min_depth(r.borrow_mut().left.take());
+            let right = Solution::min_depth(r.borrow_mut().right.take());
             if hasLeft && hasRight {
                 if left > right {
                     return right + 1;

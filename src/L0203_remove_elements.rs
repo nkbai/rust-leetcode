@@ -12,7 +12,6 @@ struct Solution {}
 impl Solution {
     pub fn remove_elements(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
         let mut head = head;
-        let mut prev = Some(Box::new(ListNode { val: 0, next: None }));
         let mut current = head.as_mut();
 
         while current.is_some() && current.as_ref().unwrap().next.is_some() {

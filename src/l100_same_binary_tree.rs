@@ -44,7 +44,6 @@
 很简单,返回false不继续,否则继续递归
 */
 use crate::share::TreeNode;
-use rand::distributions::uniform::SampleBorrow;
 use std::cell::RefCell;
 use std::rc::Rc;
 struct Solution {}
@@ -84,11 +83,11 @@ mod test {
     use crate::share::NULL;
     #[test]
     fn test_num_trees() {
-        let mut r = build_tree(&vec![1, 3, NULL, NULL, 2]);
-        let mut r2 = build_tree(&vec![1, 3, NULL, NULL, 2]);
+        let r = build_tree(&vec![1, 3, NULL, NULL, 2]);
+        let r2 = build_tree(&vec![1, 3, NULL, NULL, 2]);
         assert_eq!(Solution::is_same_tree(r, r2), true);
-        let mut r = build_tree(&vec![1, 3, NULL, NULL, 2]);
-        let mut r3 = build_tree(&vec![3, 1, 4, NULL, NULL, 2]);
+        let r = build_tree(&vec![1, 3, NULL, NULL, 2]);
+        let r3 = build_tree(&vec![3, 1, 4, NULL, NULL, 2]);
         assert_eq!(Solution::is_same_tree(r, r3), false);
     }
 }

@@ -53,7 +53,7 @@ impl Solution {
     pub fn get_permutation(n: i32, k: i32) -> String {
         let n = n as usize;
         let k = k as usize;
-        let mut v: Vec<usize> = (1..=n).collect();
+        let v: Vec<usize> = (1..=n).collect();
         let mut pmap: BTreeMap<usize, usize> = BTreeMap::new();
         pmap.insert(1, 1);
         for i in 2..=n {
@@ -80,8 +80,7 @@ impl Solution {
         找出最高位应该是什么
         */
         let item = pmap.get(&(left.len() - 1)).unwrap();
-        let mut first = k / *item;
-        let mut index = k % *item;
+        let first = k / *item;
         assert!(!(first >= left.len()), "k is too large");
 
         //        移除最高位

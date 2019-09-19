@@ -71,7 +71,7 @@ mod test {
     use crate::share::NULL;
     #[test]
     fn test_num_trees() {
-        let mut r = build_tree(&vec![0, -3, 9, -10, NULL, 5]);
+        let r = build_tree(&vec![0, -3, 9, -10, NULL, 5]);
         assert_eq!(Solution::sorted_array_to_bst(vec![-10, -3, 0, 5, 9]), r);
     }
 }

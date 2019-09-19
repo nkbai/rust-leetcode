@@ -54,7 +54,6 @@ struct Solution {}
 impl Solution {
     pub fn simplify_path(path: String) -> String {
         let mut st = Vec::new();
-        let ss: Vec<_> = path.split("/").collect();
         for s in path.split("/") {
             //            println!("s={}", s);
             if s.len() == 0 {

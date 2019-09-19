@@ -58,7 +58,7 @@ impl MyCircularDeque {
     /** Initialize your data structure here. Set the size of the deque to be k. */
     fn new(k: i32) -> Self {
         let k = k as usize;
-        let mut m = MyCircularDeque { v: Vec::new(), k };
+        let m = MyCircularDeque { v: Vec::new(), k };
         return m;
     }
     /** Adds an item at the front of Deque. Return true if the operation is successful. */

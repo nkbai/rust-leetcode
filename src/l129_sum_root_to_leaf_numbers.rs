@@ -73,7 +73,6 @@ mod test {
     #[warn(unused_imports)]
     use super::*;
     use crate::share::build_tree;
-    use crate::share::NULL;
     #[test]
     fn test_generate() {
         let t = build_tree(&vec![4, 9, 0, 5, 1]);

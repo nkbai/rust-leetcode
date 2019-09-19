@@ -55,7 +55,7 @@ where
     u.cell.set(s);
 }
 
-fn evil2<'long, 'short>(t: &mut Table<'long>, s: &'short isize)
+fn evil2<'long, 'short>(_t: &mut Table<'long>, _s: &'short isize)
 where
     'long: 'short,
 {

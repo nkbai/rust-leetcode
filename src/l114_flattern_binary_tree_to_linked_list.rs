@@ -56,19 +56,19 @@ use std::rc::Rc;
 struct Solution {}
 impl Solution {
     pub fn flatten(root: &mut Option<Rc<RefCell<TreeNode>>>) {
-        let mut pre = Some(Rc::new(RefCell::new(TreeNode::new(0))));
+        let pre = Some(Rc::new(RefCell::new(TreeNode::new(0))));
         Solution::flattern_internal(pre.unwrap(), root.clone());
     }
     fn flattern_internal(
-        mut root: Rc<RefCell<TreeNode>>,
-        mut cur: Option<Rc<RefCell<TreeNode>>>,
+        root: Rc<RefCell<TreeNode>>,
+        cur: Option<Rc<RefCell<TreeNode>>>,
     ) -> Rc<RefCell<TreeNode>> {
         //        println!("root={:?},cur={:?}", root, cur);
         if let Some(r) = cur {
             root.borrow_mut().right = Some(r.clone());
             let root = root.borrow().right.clone().unwrap();
-            let mut left = r.borrow_mut().left.take();
-            let mut right = r.borrow_mut().right.take();
+            let left = r.borrow_mut().left.take();
+            let right = r.borrow_mut().right.take();
             //            println!("root={:?}", root);
             let root = Solution::flattern_internal(root, left);
             //            println!("rootleft={:?}", root);
