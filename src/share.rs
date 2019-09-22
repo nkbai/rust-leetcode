@@ -56,6 +56,11 @@ impl TreeNode {
         }
     }
 }
+/*
+构造树的时候,按照leetcode的规则来,如果父节点是空,那么就不必 给出子节点.
+这样就不是严格意义上的那个2i+1,2i+2,稍微复杂一点
+*/
+pub fn build_tree_ignore_parent(v: &Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {}
 
 pub fn build_tree(v: &Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
     build_tree_helper(0, v)

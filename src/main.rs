@@ -74,6 +74,7 @@ mod l515_find_largest_value_in_each_tree;
 mod l530_minimum_absolute_difference_in_bst;
 mod l538_convert_bst_to_greater_tree;
 mod l538_convert_bst_to_greater_tree2;
+mod l543_diameter_of_binary_tree;
 mod l622_design_circular_queue;
 mod l641_design_circular_deque;
 mod l704_binary_search;
