@@ -26,7 +26,7 @@
 */
 /*
 思路:
-每个节点都会返回三个值:
+每个节点都会返回两个值:(1. 不能继续走下去的,2,3.可以继续走下去的)
 1. 经过自身(或者不经过自身)截至的最大直径长度,比如对于节点2,4-2-5 这条路径,最大节点数是3
 2.   不经过自身的最大直径长度,如果上图0还有一个子节点9,那么针对节点1,返回值应该是
  经过自身最大直径长度是7,继续走下去的是6,整体最大长度则是8
@@ -52,7 +52,7 @@ impl Solution {
     }
     /*
     第一个: 经过自身(或者不经过自身)截至的最大节点数
-    第二个: 经过自身可以继续的最大节点数
+    第二个: 可以继续走下去的最大节点数
     */
     fn internal(root: Option<Rc<RefCell<TreeNode>>>) -> (i32, i32) {
         if root.is_none() {
@@ -83,20 +83,9 @@ mod test {
         //            Solution::diameter_of_binary_tree(build_tree(&vec![2, 1, 3])),
         //            2
         //        );
-        let t = build_tree(&vec![
-            4, //注释
-            -7, -3, //换行
-            NULL, NULL, -9, -3, //换行
-            NULL, NULL, NULL, NULL, 9, -7, -4, NULL, //换行
-            NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6, NULL, -6, -6, NULL, NULL, NULL,
-            NULL, //换行
-            NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-            NULL, NULL, 0, 6, NULL, NULL, 5, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-            NULL, NULL, //huanhang
-            NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-            NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-            NULL, NULL, NULL, NULL, //ZHONGJIAN
-            NULL, -1, -4, NULL, NULL, NULL, NULL, NULL, -2, //最后一行
+        let t = build_tree_ignore_parent(&vec![
+            4, -7, -3, null, null, -9, -3, 9, -7, -4, null, 6, null, -6, -6, null, null, 0, 6, 5,
+            null, 9, null, null, -1, -4, null, null, null, -2,
         ]);
         println!("t={:?}", t);
         assert_eq!(Solution::diameter_of_binary_tree(t), 8);
