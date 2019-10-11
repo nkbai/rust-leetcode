@@ -82,6 +82,8 @@ mod l623_add_one_row_to_tree;
 mod l641_design_circular_deque;
 mod l652_find_duplicate_subtrees;
 mod l654_maximum_binary_tree;
+mod l655_print_binary_tree;
+mod l701_insert_into_a_bst;
 mod l704_binary_search;
 mod l713_subarray_product_less_than_k;
 mod l925_long_pressed_name;
