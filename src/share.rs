@@ -144,7 +144,63 @@ fn build_tree_helper(i: usize, v: &Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
         right,
     })))
 }
+#[derive(PartialEq, Eq, Clone, Debug)]
+struct SerializeLayer {
+    last_pos: i32,                             //-1表示这一层没有任何节点
+    nodes: Vec<Option<Rc<RefCell<TreeNode>>>>, //这一层的所有节点
+}
+impl SerializeLayer {
+    fn new() -> SerializeLayer {
+        SerializeLayer {
+            last_pos: -1,
+            nodes: Vec::new(),
+        }
+    }
+}
+pub fn serialize_tree(root: Option<Rc<RefCell<TreeNode>>>) -> String {
+    let mut layer = SerializeLayer::new();
+    if root.is_none() {
+        return String::new();
+    }
+    let mut r = String::new(); //结果不存在这里
 
+    //第一层
+    layer.nodes.push(root.clone());
+    layer.last_pos = 0;
+    while layer.last_pos >= 0 {
+        //            println!("layer={:?}", layer);
+        let mut nextLayer = SerializeLayer::new();
+        let mut i = 0;
+        while i <= layer.last_pos {
+            let cn = layer.nodes[i as usize].clone();
+            if cn.is_none() {
+                r += &format!("{},", "NULL").to_string();
+            } else {
+                let n: Rc<RefCell<TreeNode>> = cn.unwrap();
+                r = r + &format!("{},", n.borrow().val).to_string();
+                //左右节点都填充上相应的值,无论是否有效,不能空
+                if n.borrow().left.is_none() {
+                    nextLayer.nodes.push(None);
+                } else {
+                    nextLayer.last_pos = 2 * i;
+                    nextLayer.nodes.push(n.borrow().left.clone());
+                }
+                if n.borrow().right.is_none() {
+                    nextLayer.nodes.push(None);
+                } else {
+                    nextLayer.last_pos = 2 * i + 1;
+                    nextLayer.nodes.push(n.borrow().right.clone());
+                }
+            }
+            i += 1;
+        }
+        //切换到下一层
+        layer = nextLayer;
+    }
+    //移除最后一个,
+    r.remove(r.len() - 1);
+    r
+}
 #[cfg(test)]
 mod test {
     use super::*;

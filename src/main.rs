@@ -86,6 +86,8 @@ mod l655_print_binary_tree;
 mod l701_insert_into_a_bst;
 mod l704_binary_search;
 mod l713_subarray_product_less_than_k;
+mod l814_binary_tree_pruning;
+mod l834_sum_of_distances_in_tree;
 mod l925_long_pressed_name;
 mod queue;
 mod rust_syntax;
