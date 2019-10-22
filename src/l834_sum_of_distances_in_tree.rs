@@ -64,6 +64,7 @@ impl Solution {
     pub fn sum_of_distances_in_tree(n: i32, edges: Vec<Vec<i32>>) -> Vec<i32> {
         Vec::new()
     }
+    //todo 如何构建呢?不用unsafe
     fn build_tree_from_edges(mut edges: Vec<Vec<i32>>) -> Option<Node> {
         if edges.len() == 0 {
             return None;
@@ -84,14 +85,9 @@ impl Solution {
             }
             if edges.len() > 0 {
                 let mut found = false;
-                for ref n in lastNode.Nodes {
-                    if n.val == lastVal {
-                        found = true;
-                        //                        lastNode = &mut n;
-                        break;
-                    }
-                }
-                if !found {
+                let pos = lastNode.Nodes.iter().position(|n| n.val == lastVal);
+
+                if pos.is_none() {
                     panic!("not found");
                 }
             }
