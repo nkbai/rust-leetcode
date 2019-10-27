@@ -89,6 +89,7 @@ mod l713_subarray_product_less_than_k;
 mod l814_binary_tree_pruning;
 mod l834_sum_of_distances_in_tree;
 mod l863_all_nodes_distance_k_in_binary_tree;
+mod l865_smallest_subtree_with_all_the_deepest_nodes;
 mod l919_complete_binary_tree_inserter;
 mod l925_long_pressed_name;
 mod queue;
