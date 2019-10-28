@@ -40,7 +40,8 @@
 否则就去他深度最深的那颗子树上去找
 */
 use crate::share::TreeNode;
-use std::cell::{Ref, RefCell};
+use std::cell::RefCell;
+use std::cmp::max;
 use std::rc::Rc;
 
 struct Solution {}
@@ -48,24 +49,28 @@ impl Solution {
     pub fn subtree_with_all_deepest(
         root: Option<Rc<RefCell<TreeNode>>>,
     ) -> Option<Rc<RefCell<TreeNode>>> {
+        let r = root.unwrap(); //至少有一个节点
+        let ldepth = Solution::depth(r.borrow().left.clone());
+        let rdepth = Solution::depth(r.borrow().right.clone());
+        if ldepth == rdepth {
+            //左右深度相同,他就是要找的了
+            return Some(r);
+        }
+        if ldepth > rdepth {
+            return Solution::subtree_with_all_deepest(r.borrow().left.clone());
+        } else {
+            return Solution::subtree_with_all_deepest(r.borrow().right.clone());
+        }
     }
-    fn prune_internal(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+    fn depth(root: Option<Rc<RefCell<TreeNode>>>) -> u32 {
         if root.is_none() {
-            return false;
+            return 0;
         }
         let r = root.unwrap();
-        let mut ret = r.borrow().val == 1;
-        if Self::prune_internal(r.borrow().left.clone()) {
-            ret = true;
-        } else {
-            r.borrow_mut().left = None;
-        }
-        if Self::prune_internal(r.borrow().right.clone()) {
-            ret = true;
-        } else {
-            r.borrow_mut().right = None;
-        }
-        return ret;
+        return max(
+            Solution::depth(r.borrow().left.clone()),
+            Solution::depth(r.borrow().right.clone()),
+        ) + 1;
     }
 }
 #[cfg(test)]
@@ -74,9 +79,8 @@ mod test {
     use crate::share::*;
     #[test]
     fn test_find_duplcates_tree() {
-        let t = build_tree_ignore_parent(&vec![1, 1, 0, 1, 1, 0, 1, 0]);
-        let r = Solution::prune_tree(t);
-        println!("r={}", serialize_tree(r.clone()));
-        assert_eq!(r, build_tree_ignore_parent(&vec![1, 1, 0, 1, 1, null, 1]))
+        let t = build_tree_ignore_parent(&vec![3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]);
+        let r = Solution::subtree_with_all_deepest(t);
+        assert_eq!(2, r.unwrap().borrow().val);
     }
 }
