@@ -89,6 +89,8 @@ mod l713_subarray_product_less_than_k;
 mod l814_binary_tree_pruning;
 mod l834_sum_of_distances_in_tree;
 mod l863_all_nodes_distance_k_in_binary_tree;
+mod l872_leaf_similiar_trees;
+mod l889_construct_binary_tree_from_preorder_and_postorder_traversal;
 mod l925_long_pressed_name;
 mod queue;
 mod rust_syntax;
