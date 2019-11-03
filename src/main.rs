@@ -92,6 +92,7 @@ mod l863_all_nodes_distance_k_in_binary_tree;
 mod l865_smallest_subtree_with_all_the_deepest_nodes;
 mod l919_complete_binary_tree_inserter;
 mod l925_long_pressed_name;
+mod l987_vectical_order_traversal_of_binary_tree;
 mod queue;
 mod rust_syntax;
 mod share;
