@@ -14,6 +14,19 @@
 只有红色节点满足条件“所有不包含 1 的子树”。
 右图为返回的答案。
 ![](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/06/1028_2.png)
+```viz
+digraph G {
+    node [shape=circle]
+    edge [arrowhead=vee]
+    n_b1_1[label="1",color="blue"]
+    n_b1_2[label="1",color="blue"]
+    n_b0_1[label="0",color="blue"]
+    n_b0_2[label="0",color="red"]
+    n_b1_1->n_b0_1
+    n_b0_1->n_b0_2
+    n_b0_1->n_b1_2
+}
+```
 
 示例2:
 输入: [1,0,1,0,0,0,1]

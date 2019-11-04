@@ -39,6 +39,7 @@ mod l098_validate_bst;
 mod l1008_constructor_bst_from_preorder_traversal;
 mod l100_same_binary_tree;
 mod l101_symmetric_binary_tree;
+mod l1028_recover_tree_from_preorder_traversal;
 mod l102_binary_tree_level_order_traversal;
 mod l103_binary_tree_zigzag_level_order_traversal;
 mod l1042_flower_planting_with_no_adjacent;
