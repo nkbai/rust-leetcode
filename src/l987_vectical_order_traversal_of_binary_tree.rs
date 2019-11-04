@@ -15,7 +15,16 @@
 
 
 示例 1：
-![](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/02/02/1236_example_1.PNG)
+```viz
+digraph G {
+    node [shape=circle]
+    edge [arrowhead=vee]
+   3-> 9
+   3-> 20
+   20->15
+   20->7
+}
+```
 
 
 输入：[3,9,20,null,null,15,7]
@@ -27,7 +36,18 @@
 值为 20 的结点出现在 (1, -1)；
 值为 7 的结点出现在 (2, -2)。
 示例 2：
-![](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/02/23/tree2.png)
+```viz
+digraph G {
+    node [shape=circle]
+    edge [arrowhead=vee]
+   1-> 2
+   1-> 3
+   2->4
+   2->5
+   3->6
+   3->7
+}
+```
 
 
 输入：[1,2,3,4,5,6,7]
@@ -66,6 +86,7 @@ impl Solution {
         let mut v = Vec::new();
         m.iter_mut().for_each(|m2| {
             let mut v2 = Vec::new();
+            println!("x={},m={:?}", m2.0, m2.1);
             m2.1.iter_mut().for_each(|v3| {
                 v3.1.sort();
                 v2.extend_from_slice(v3.1.as_slice());
@@ -98,8 +119,11 @@ impl Solution {
             m2.insert(y, vec![r.borrow().val]);
             m.insert(x, m2);
         }
-        Solution::vertical_traversal_internal(r.borrow().left.clone(), m, x - 1, y - 1);
-        Solution::vertical_traversal_internal(r.borrow().right.clone(), m, x + 1, y - 1);
+        /*
+            由于BTreeMap key排序比较麻烦,这里简单让y坐标向上增长,效果完全相同
+        */
+        Solution::vertical_traversal_internal(r.borrow().left.clone(), m, x - 1, y + 1);
+        Solution::vertical_traversal_internal(r.borrow().right.clone(), m, x + 1, y + 1);
     }
 }
 #[cfg(test)]
@@ -111,5 +135,8 @@ mod test {
         let t = build_tree_ignore_parent(&vec![3, 9, 20, null, null, 15, 7]);
         let r = Solution::vertical_traversal(t);
         assert_eq!(r, vec![vec![9], vec![3, 15], vec![20], vec![7]]);
+        let t = build_tree_ignore_parent(&vec![1, 2, 3, 4, 5, 6, 7]);
+        let r = Solution::vertical_traversal(t);
+        assert_eq!(r, vec![vec![4], vec![2], vec![1, 5, 6], vec![3], vec![7]]);
     }
 }

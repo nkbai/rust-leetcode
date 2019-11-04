@@ -49,10 +49,6 @@
 1到当前节点为0+1,到所有其他节点之和为1(自己到左子树节点距离之和)+len(right)*(0+2)+1(右子树2到所有其他节点距离之和)+1(到0的距离)
 5到当前节点距离为1+1,到所有其他节点之和为1+len(right)*(1+2)+1+(1+1)
 */
-use crate::share::TreeNode;
-use std::cell::{Ref, RefCell};
-use std::collections::HashMap;
-use std::rc::Rc;
 
 struct Solution {}
 #[derive(Debug, PartialEq, Eq, Clone)]
@@ -98,7 +94,6 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::share::*;
     #[test]
     fn test_find_duplcates_tree() {
         //        [[0,1],[0,2],[2,3],[2,4],[2,5]]

@@ -2,6 +2,7 @@
 use std::cell::RefCell;
 use std::cmp::Ordering;
 use std::rc::Rc;
+
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
     pub val: i32,
@@ -55,6 +56,51 @@ impl TreeNode {
             left: None,
             right: None,
         }
+    }
+    pub fn to_string(&self) -> String {
+        self.to_string_internal(0)
+    }
+    pub fn to_string_internal(&self, depth: i32) -> String {
+        //        (0..depth).iter().for_each(|_| write!("  "));
+        let mut s = format!("{{ v:{},", self.val);
+        s += "\n";
+        for _ in 0..depth {
+            s += "  ";
+        }
+        s += "l:";
+        if self.left.is_none() {
+            s += "None";
+        } else {
+            s += self
+                .left
+                .clone()
+                .unwrap()
+                .borrow()
+                .to_string_internal(depth + 1)
+                .as_str();
+        }
+        s += "\n";
+        for _ in 0..depth {
+            s += "  ";
+        }
+        s += "r:";
+        if self.right.is_none() {
+            s += "None";
+        } else {
+            s += self
+                .right
+                .clone()
+                .unwrap()
+                .borrow()
+                .to_string_internal(depth + 1)
+                .as_str();
+        }
+        s += "\n";
+        for _ in 0..depth {
+            s += "  ";
+        }
+        s += "}}";
+        s
     }
 }
 /*
@@ -206,7 +252,8 @@ mod test {
     use super::*;
     #[test]
     fn test_build_tree() {
-        println!("tree={:?}", build_tree(&vec![0, -3, 9, -10, NULL, 5]));
+        let t = build_tree(&vec![0, -3, 9, -10, NULL, 5, 7, 8, 9, 10, 11, 12, 13, 14]);
+        println!("tree={}", t.unwrap().borrow().to_string());
     }
     #[test]
     fn test_build_tree2() {

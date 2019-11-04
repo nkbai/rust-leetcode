@@ -49,7 +49,7 @@ impl Solution {
     pub fn subtree_with_all_deepest(
         root: Option<Rc<RefCell<TreeNode>>>,
     ) -> Option<Rc<RefCell<TreeNode>>> {
-        let r = root.unwrap(); //至少有一个节点
+        let r = root.expect("must have one node"); //至少有一个节点
         let ldepth = Solution::depth(r.borrow().left.clone());
         let rdepth = Solution::depth(r.borrow().right.clone());
         if ldepth == rdepth {
@@ -72,6 +72,39 @@ impl Solution {
             Solution::depth(r.borrow().right.clone()),
         ) + 1;
     }
+
+    pub fn subtree_with_all_deepest2(
+        root: Option<Rc<RefCell<TreeNode>>>,
+    ) -> Option<Rc<RefCell<TreeNode>>> {
+        return Solution::dfs(root, 0).1;
+    }
+    /*
+    遍历一遍就能得到
+    思路:
+    针对每个结点返回两个参数 1.当前子树的最深深度 2. 当前包含所有最深结点的那颗最小子树
+    初始:
+    1. 每个叶节点返回的都是他的深度以及它自身
+    2. 如果叶节点的父节点是左右对称的,那么返回父节点以及叶节点的深度
+    3. 如果叶节点左右不对称,返回叶节点以及叶节点的深度
+
+    */
+    fn dfs(root: Option<Rc<RefCell<TreeNode>>>, d: i32) -> (i32, Option<Rc<RefCell<TreeNode>>>) {
+        if root.is_none() {
+            return (-1, None);
+        }
+        let r = root.clone().unwrap();
+
+        let l = Solution::dfs(r.borrow().left.clone(), d + 1);
+        let r = Solution::dfs(r.borrow().right.clone(), d + 1);
+        if l.0 > r.0 {
+            return l;
+        } else if r.0 > l.0 {
+            return r;
+        } else {
+            //max主要是处理左右子树都为空,都是-1的情形
+            return (max(l.0, d), root); //最大深度包含所有
+        }
+    }
 }
 #[cfg(test)]
 mod test {
@@ -80,7 +113,9 @@ mod test {
     #[test]
     fn test_find_duplcates_tree() {
         let t = build_tree_ignore_parent(&vec![3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]);
-        let r = Solution::subtree_with_all_deepest(t);
+        let r = Solution::subtree_with_all_deepest(t.clone());
+        assert_eq!(2, r.unwrap().borrow().val);
+        let r = Solution::subtree_with_all_deepest2(t);
         assert_eq!(2, r.unwrap().borrow().val);
     }
 }
