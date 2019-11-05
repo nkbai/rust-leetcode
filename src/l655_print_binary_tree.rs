@@ -86,11 +86,11 @@ impl Solution {
         let space_count = (1 << (height - 1)) - 1;
         //        println!("height={},space_count={}", height, space_count);
         let mut this_level = Vec::new();
-        for x in 0..space_count {
+        for _ in 0..space_count {
             this_level.push(String::from(""))
         }
         this_level.push(val);
-        for x in 0..space_count {
+        for _ in 0..space_count {
             this_level.push(String::from(""))
         }
         result.push(this_level);

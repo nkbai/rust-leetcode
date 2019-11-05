@@ -61,7 +61,7 @@ impl Solution {
         let r = root.unwrap();
         let (l1, l2) = Self::internal(r.borrow().left.clone());
         let (r1, r2) = Self::internal(r.borrow().right.clone());
-        let mut c2 = max(l2, r2) + 1;
+        let c2 = max(l2, r2) + 1;
         let mut c1 = l2 + r2 + 1;
         c1 = max(c1, l1);
         c1 = max(c1, r1);

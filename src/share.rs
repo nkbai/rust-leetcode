@@ -116,7 +116,7 @@ fn buld_tree_ignore_parent_internal(
     parent: &Vec<Rc<RefCell<TreeNode>>>,
     from: usize,
 ) -> Option<Rc<RefCell<TreeNode>>> {
-    let mut this_level_len = parent.len();
+    let this_level_len = parent.len();
     if this_level_len == 0 && v.len() == 0 {
         return None; //空树
     } else if this_level_len == 0 {

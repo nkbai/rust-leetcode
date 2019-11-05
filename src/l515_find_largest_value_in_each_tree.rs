@@ -40,8 +40,8 @@ impl Solution {
         h.push(v);
         while !h.is_empty() {
             let mut max = std::i32::MIN;
-            let mut vh = h.remove(0); //移除第一个
-                                      //            println!("vh={:?}", vh);
+            let vh = h.remove(0); //移除第一个
+                                  //            println!("vh={:?}", vh);
             let mut vh2 = Vec::new();
 
             vh.iter().for_each(|t| {

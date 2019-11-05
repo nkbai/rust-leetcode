@@ -81,8 +81,8 @@ mod test {
 
     #[test]
     fn test_find_duplcates_tree() {
-        let t = Solution::find_duplicate_subtrees(build_tree_ignore_parent(&vec![3, 4, 5, 2, 2]));
-        // println!("t={:?}", t);
+        //        let t = Solution::find_duplicate_subtrees(build_tree_ignore_parent(&vec![3, 4, 5, 2, 2]));
+        //        // println!("t={:?}", t);
         let t = Solution::find_duplicate_subtrees(build_tree_ignore_parent(&vec![
             1, 2, 3, 4, null, 2, 4, null, null, 4,
         ]));

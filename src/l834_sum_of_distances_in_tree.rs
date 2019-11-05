@@ -70,7 +70,7 @@ impl Solution {
             val: lastVal,
             Nodes: Vec::new(),
         };
-        let mut lastNode = &mut root;
+        let lastNode = &mut root;
         while edges.len() > 0 {
             while edges.len() > 0 && edges[0][0] == lastVal {
                 lastNode.Nodes.push(Node {
@@ -80,9 +80,7 @@ impl Solution {
                 edges.remove(0);
             }
             if edges.len() > 0 {
-                let mut found = false;
                 let pos = lastNode.Nodes.iter().position(|n| n.val == lastVal);
-
                 if pos.is_none() {
                     panic!("not found");
                 }

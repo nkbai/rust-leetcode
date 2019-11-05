@@ -96,7 +96,6 @@ impl Solution {
             //深度和当前一样,说明是父节点的右子节点
             return left;
         }
-        left
     }
     fn nextDepth(left: &[u8]) -> (&[u8], usize) {
         if left[0] != '-' as u8 {
