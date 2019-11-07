@@ -50,6 +50,7 @@ mod l106_construct_binary_tree_from_inorder_and_postorder;
 mod l107_binary_tree_level_order_traversal_ii;
 mod l108_convert_sorted_array_to_bst;
 mod l109_convert_sorted_list_to_binary;
+mod l1104_path_in_zigzag_labeled_binary_tree;
 mod l110_balanced_bst;
 mod l111_depth_of_binary_tree;
 mod l112_path_sum;
