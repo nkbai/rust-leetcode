@@ -66,6 +66,7 @@ mod l144_binary_tree_preorder_traversal;
 mod l146_lru_cach3;
 mod l146_lru_cache;
 mod l146_lru_cache2;
+mod l173_binary_search_tree_iterator;
 mod l199_binary_tree_right_side_view;
 mod l206_reverse_linked_list;
 mod l222_count_complete_tree_nodes;
