@@ -70,6 +70,7 @@ mod l146_lru_cache2;
 mod l173_binary_search_tree_iterator;
 mod l199_binary_tree_right_side_view;
 mod l206_reverse_linked_list;
+mod l220_contains_duplicate_iii;
 mod l222_count_complete_tree_nodes;
 mod l226_invert_binary_tree;
 mod l230_kth_smallest_element_in_a_bst;
