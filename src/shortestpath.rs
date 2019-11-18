@@ -29,11 +29,7 @@ fn shortest_path(adj_list: &Vec<Vec<Edge>>, start: usize, goal: usize) -> Option
         node: start,
         cost: 0,
     });
-    while let Some(State {
-        node: pos,
-        cost: cost,
-    }) = h.pop()
-    {
+    while let Some(State { node: pos, cost }) = h.pop() {
         println!("process node={},cost={}", pos, cost);
         //找到了一个更小的路径,如果是目标就结束
         if pos == goal {

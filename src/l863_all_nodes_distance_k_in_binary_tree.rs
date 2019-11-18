@@ -60,23 +60,23 @@ impl Solution {
         root: Option<Rc<RefCell<TreeNode>>>,
         target: i32,
         K: i32,
-        thisDistance: i32,
+        this_distance: i32,
         v: &mut HashSet<i32>,
         found: &mut bool,
     ) -> i32 {
-        if root.is_none() || thisDistance > K {
+        if root.is_none() || this_distance > K {
             return -1;
         }
         let r = root.unwrap();
         println!("visit {}", r.borrow().val);
         //找到target后的逻辑就比较简单,所有节点都是加一的距离
         if *found {
-            if thisDistance == K {
+            if this_distance == K {
                 v.insert(r.borrow().val);
                 println!(
                     "push {},distance={},found={}",
                     r.borrow().val,
-                    thisDistance,
+                    this_distance,
                     found
                 );
             }
@@ -85,7 +85,7 @@ impl Solution {
                 r.borrow().left.clone(),
                 target,
                 K,
-                thisDistance + 1,
+                this_distance + 1,
                 v,
                 found,
             );
@@ -93,11 +93,11 @@ impl Solution {
                 r.borrow().right.clone(),
                 target,
                 K,
-                thisDistance + 1,
+                this_distance + 1,
                 v,
                 found,
             );
-            return thisDistance;
+            return this_distance;
         } else {
             //还没有找到target,正常遍历
             if r.borrow().val == target {
@@ -116,7 +116,7 @@ impl Solution {
                         println!(
                             "push {},distance={},found={}",
                             r.borrow().val,
-                            thisDistance,
+                            this_distance,
                             found
                         );
                     }
@@ -132,7 +132,7 @@ impl Solution {
                             println!(
                                 "push {},distance={},found={}",
                                 r.borrow().val,
-                                thisDistance,
+                                this_distance,
                                 found
                             );
                         }

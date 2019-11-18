@@ -54,7 +54,7 @@ impl Solution {
         let mut isFirst = true;
         let mut cur_pos = label;
         while cur_pos > 0 {
-            let first_one_pos = 32 - leading_zero(cur_pos as u32);
+            let first_one_pos = 32 - cur_pos.leading_zeros(); // leading_zero(cur_pos as u32);
             println!("cur={},first_one_pos={}", cur_pos, first_one_pos);
             let isEven = first_one_pos % 2 == 0; //第一个1是奇数行,从1开始
             let mut order_num = cur_pos;
@@ -93,7 +93,7 @@ fn leading_zero(x: u32) -> i32 {
         n += 4;
         x <<= 4;
     }
-    if (x <= 0x3fffffff) {
+    if x <= 0x3fffffff {
         n += 2;
         x <<= 2;
     }

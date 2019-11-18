@@ -25,7 +25,7 @@ O(kN) 反复检索,
 为了优化,新进来的数查找的时候,可以使用BTreeSet,使用二叉搜索树
 */
 use std::cmp::min;
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, HashMap};
 use std::ops::Bound::Included;
 struct Solution {}
 
