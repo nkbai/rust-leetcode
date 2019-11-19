@@ -59,19 +59,19 @@ impl Solution {
     fn internal(
         root: Option<Rc<RefCell<TreeNode>>>,
         target: i32,
-        K: i32,
+        k: i32,
         this_distance: i32,
         v: &mut HashSet<i32>,
         found: &mut bool,
     ) -> i32 {
-        if root.is_none() || this_distance > K {
+        if root.is_none() || this_distance > k {
             return -1;
         }
         let r = root.unwrap();
         println!("visit {}", r.borrow().val);
         //找到target后的逻辑就比较简单,所有节点都是加一的距离
         if *found {
-            if this_distance == K {
+            if this_distance == k {
                 v.insert(r.borrow().val);
                 println!(
                     "push {},distance={},found={}",
@@ -84,7 +84,7 @@ impl Solution {
             Self::internal(
                 r.borrow().left.clone(),
                 target,
-                K,
+                k,
                 this_distance + 1,
                 v,
                 found,
@@ -92,7 +92,7 @@ impl Solution {
             Self::internal(
                 r.borrow().right.clone(),
                 target,
-                K,
+                k,
                 this_distance + 1,
                 v,
                 found,
@@ -103,14 +103,14 @@ impl Solution {
             if r.borrow().val == target {
                 //我就是要找的那个target
                 *found = true;
-                Self::internal(r.borrow().left.clone(), target, K, 1, v, found);
-                Self::internal(r.borrow().right.clone(), target, K, 1, v, found);
+                Self::internal(r.borrow().left.clone(), target, k, 1, v, found);
+                Self::internal(r.borrow().right.clone(), target, k, 1, v, found);
                 return 0;
             } else {
                 //尝试遍历
-                let d1 = Self::internal(r.borrow().left.clone(), target, K, -1, v, found);
-                if d1 >= 0 && d1 <= K {
-                    if d1 + 1 == K {
+                let d1 = Self::internal(r.borrow().left.clone(), target, k, -1, v, found);
+                if d1 >= 0 && d1 <= k {
+                    if d1 + 1 == k {
                         //自己可以放进去,然后尝试放右子树
                         v.insert(r.borrow().val);
                         println!(
@@ -120,13 +120,13 @@ impl Solution {
                             found
                         );
                     }
-                    Self::internal(r.borrow().right.clone(), target, K, d1 + 2, v, found);
+                    Self::internal(r.borrow().right.clone(), target, k, d1 + 2, v, found);
                     return d1 + 1;
                 } else {
                     //左子树没找到,遍历右子树
-                    let d2 = Self::internal(r.borrow().right.clone(), target, K, -1, v, found);
-                    if d2 >= 0 && d2 <= K {
-                        if d2 + 1 == K {
+                    let d2 = Self::internal(r.borrow().right.clone(), target, k, -1, v, found);
+                    if d2 >= 0 && d2 <= k {
+                        if d2 + 1 == k {
                             //在右子树上找到了target,再次遍历左子树
                             v.insert(r.borrow().val);
                             println!(
@@ -136,7 +136,7 @@ impl Solution {
                                 found
                             );
                         }
-                        Self::internal(r.borrow().left.clone(), target, K, d2 + 2, v, found);
+                        Self::internal(r.borrow().left.clone(), target, k, d2 + 2, v, found);
                         return d2 + 1;
                     }
                     return -1; //左右子树都没有找到,那就继续找
