@@ -65,6 +65,7 @@ impl Solution {
             let mut j = i;
             while m2.len() > 0 && j + sub_len <= s.len() {
                 println!("i={},j={}", i, j);
+                //应该是rust版本问题,低版本必须先独立声明r,不能直接使用s[j..(j+sub_len)]
                 let r = j..(j + sub_len);
                 let sub = &s[r];
                 if m2.contains_key(sub) {

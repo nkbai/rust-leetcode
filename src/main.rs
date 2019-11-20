@@ -69,6 +69,7 @@ mod l146_lru_cache;
 mod l146_lru_cache2;
 mod l155_min_stack;
 mod l173_binary_search_tree_iterator;
+mod l187_repeated_dna_sequences;
 mod l199_binary_tree_right_side_view;
 mod l206_reverse_linked_list;
 mod l220_contains_duplicate_iii;
