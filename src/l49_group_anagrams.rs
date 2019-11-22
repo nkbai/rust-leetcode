@@ -57,7 +57,6 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::share::*;
 
     #[test]
     fn test() {

@@ -215,7 +215,7 @@ pub fn serialize_tree(root: Option<Rc<RefCell<TreeNode>>>) -> String {
     layer.last_pos = 0;
     while layer.last_pos >= 0 {
         //            println!("layer={:?}", layer);
-        let mut nextLayer = SerializeLayer::new();
+        let mut next_layer = SerializeLayer::new();
         let mut i = 0;
         while i <= layer.last_pos {
             let cn = layer.nodes[i as usize].clone();
@@ -226,22 +226,22 @@ pub fn serialize_tree(root: Option<Rc<RefCell<TreeNode>>>) -> String {
                 r = r + &format!("{},", n.borrow().val).to_string();
                 //左右节点都填充上相应的值,无论是否有效,不能空
                 if n.borrow().left.is_none() {
-                    nextLayer.nodes.push(None);
+                    next_layer.nodes.push(None);
                 } else {
-                    nextLayer.last_pos = 2 * i;
-                    nextLayer.nodes.push(n.borrow().left.clone());
+                    next_layer.last_pos = 2 * i;
+                    next_layer.nodes.push(n.borrow().left.clone());
                 }
                 if n.borrow().right.is_none() {
-                    nextLayer.nodes.push(None);
+                    next_layer.nodes.push(None);
                 } else {
-                    nextLayer.last_pos = 2 * i + 1;
-                    nextLayer.nodes.push(n.borrow().right.clone());
+                    next_layer.last_pos = 2 * i + 1;
+                    next_layer.nodes.push(n.borrow().right.clone());
                 }
             }
             i += 1;
         }
         //切换到下一层
-        layer = nextLayer;
+        layer = next_layer;
     }
     //移除最后一个,
     r.remove(r.len() - 1);
