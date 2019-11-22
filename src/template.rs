@@ -30,13 +30,15 @@
 
 struct Solution {}
 impl Solution {
-    pub fn fraction_to_decimal(_numerator: i32, _denominator: i32) -> String {
+    pub fn fraction_to_decimal(numerator: i32, denominator: i32) -> String {
         panic!("not implement")
     }
 }
 #[cfg(test)]
 mod test {
-
+    use super::*;
+    use crate::share::build_tree;
+    use crate::share::NULL;
     #[test]
     fn test_sorted_list_to_bst() {}
 }

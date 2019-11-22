@@ -61,7 +61,6 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::share;
     #[test]
     fn test_reverse_list() {
         let t = Solution::four_sum_count(vec![1, 2], vec![-2, -1], vec![-1, 2], vec![0, 2]);

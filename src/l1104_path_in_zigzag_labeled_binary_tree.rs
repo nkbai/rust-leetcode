@@ -105,7 +105,6 @@ fn leading_zero(x: u32) -> i32 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::share::*;
     #[test]
     fn test() {
         assert_eq!(Solution::path_in_zig_zag_tree(14), vec![1, 3, 4, 14]);

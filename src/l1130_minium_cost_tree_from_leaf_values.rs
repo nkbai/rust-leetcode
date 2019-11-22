@@ -108,7 +108,6 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::share::*;
     #[test]
     fn test() {
         assert_eq!(Solution::mct_from_leaf_values(vec![6, 2, 4]), 32);

@@ -23,9 +23,6 @@
 所以非常简单,10个字符是个字符统计即可,建立一个hashMap,
 字符串长度为N,那么就会出现10*N个元素,统计哪些出现次数大于1即可
 */
-
-use std::cmp::{Ordering, Reverse};
-use std::collections::binary_heap::BinaryHeap;
 use std::collections::HashMap;
 
 struct Solution;
@@ -62,8 +59,7 @@ impl Solution {
         if s.len() < 10 {
             return Vec::new();
         }
-        for i in 0..s.len() - 10+1 {
-            let r = i..(i + 10);
+        for i in 0..s.len() - 10 + 1 {
             let key = &s[i..(i + 10)];
             m.entry(key).or_insert((0, i)).0 += 1;
         }
@@ -78,10 +74,8 @@ impl Solution {
                 }));
             }
         }
-//        res2.sort();
-        res2.sort_by(|a,b|{
-           a.0.cmp(&b.0)
-        });
+        //        res2.sort();
+        res2.sort_by(|a, b| a.0.cmp(&b.0));
         for x in res2 {
             res.push(x.1);
         }
@@ -91,7 +85,6 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::share::*;
     #[test]
     fn test() {
         assert_eq!(

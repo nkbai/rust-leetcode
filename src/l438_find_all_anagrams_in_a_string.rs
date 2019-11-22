@@ -97,14 +97,13 @@ impl Term {
         return self.count == self.expect;
     }
 }
-use std::collections::hash_map::Entry;
 impl Solution {
     pub fn find_anagrams(s: String, p: String) -> Vec<i32> {
         let s = s.as_bytes();
         let p = p.as_bytes();
         let mut m = HashMap::new();
         let mut v = Vec::new();
-        let mut total_count = p.len() as i32;
+        let total_count = p.len() as i32;
         let mut last_count = 0;
 
         for b in p {
@@ -140,7 +139,7 @@ impl Solution {
                                 i = j + 1;
                                 break;
                             }
-                            Some(mut e) => {
+                            Some(e) => {
                                 cnt += 1;
                                 let r = e.incExpect();
                                 //总数匹配了,并且最近一次数量刚好相等,说明找到了一个完整匹配

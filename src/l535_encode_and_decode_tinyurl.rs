@@ -14,8 +14,6 @@ TinyURL是一种URL简化服务， 比如：当你输入一个URL https://leetc
 基本上最好的方法就是随机数
 */
 
-use rand::prelude::*;
-use std::collections::hash_map::Entry;
 use std::collections::HashMap;
 
 struct Solution {
@@ -34,7 +32,7 @@ impl Solution {
     }
     fn getKey(&self) -> String {
         let mut s = Vec::new();
-        for i in 0..6 {
+        for _ in 0..6 {
             let mut x: usize = rand::random();
             x = x % self.s.len();
             s.push(self.s[x]);
@@ -60,7 +58,6 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::share;
     #[test]
     fn test_reverse_list() {
         let str = String::from("aaabbb");

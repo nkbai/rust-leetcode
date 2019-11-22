@@ -64,7 +64,6 @@ impl Solution {
             //空,说明它的深度最低,
             return (-1, root);
         }
-        use std::i32;
         depth.leading_zeros();
         let r = root.clone().unwrap();
         if r.borrow().left.is_none() && r.borrow().right.is_none() {

@@ -84,7 +84,6 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::share::*;
     #[test]
     fn test() {
         let r = build_tree_ignore_parent(&vec![1, 2, 3, 4, 5, 6, 7]);

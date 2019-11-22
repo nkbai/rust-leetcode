@@ -57,7 +57,7 @@ impl Solution {
                         max = i.0 as i32 - *e.get();
                     }
                 }
-                Entry::Vacant(mut e) => {
+                Entry::Vacant(e) => {
                     e.insert(i.0 as i32);
                 }
             };
@@ -69,7 +69,6 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::share;
     #[test]
     fn test_reverse_list() {
         let t = Solution::find_max_length(vec![1, 1, 1, 0, 1, 1, 1, 0, 1]);

@@ -57,7 +57,7 @@ struct Node {
     Nodes: Vec<Node>,
 }
 impl Solution {
-    pub fn sum_of_distances_in_tree(n: i32, edges: Vec<Vec<i32>>) -> Vec<i32> {
+    pub fn sum_of_distances_in_tree(_n: i32, _edges: Vec<Vec<i32>>) -> Vec<i32> {
         Vec::new()
     }
     //todo 如何构建呢?不用unsafe
@@ -65,14 +65,14 @@ impl Solution {
         if edges.len() == 0 {
             return None;
         }
-        let mut lastVal = edges[0][0];
+        let last_val = edges[0][0];
         let mut root = Node {
-            val: lastVal,
+            val: last_val,
             Nodes: Vec::new(),
         };
         let lastNode = &mut root;
         while edges.len() > 0 {
-            while edges.len() > 0 && edges[0][0] == lastVal {
+            while edges.len() > 0 && edges[0][0] == last_val {
                 lastNode.Nodes.push(Node {
                     val: edges[0][1],
                     Nodes: Vec::new(),
@@ -80,7 +80,7 @@ impl Solution {
                 edges.remove(0);
             }
             if edges.len() > 0 {
-                let pos = lastNode.Nodes.iter().position(|n| n.val == lastVal);
+                let pos = lastNode.Nodes.iter().position(|n| n.val == last_val);
                 if pos.is_none() {
                     panic!("not found");
                 }
