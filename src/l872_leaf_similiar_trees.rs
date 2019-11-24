@@ -71,10 +71,10 @@ mod test {
     use crate::share::*;
     #[test]
     fn test_construct_tree() {
-        let t1 = build_tree_ignore_parent(&vec![3, 5, 1, 6, 2, 9, 8, null, null, 7, 4]);
-        let t2 = build_tree_ignore_parent(&vec![4, 9, 1, 6, 3, 9, 8, null, null, 7, 4]);
+        let t1 = build_tree_ignore_parent(&vec![3, 5, 1, 6, 2, 9, 8, NULL, NULL, 7, 4]);
+        let t2 = build_tree_ignore_parent(&vec![4, 9, 1, 6, 3, 9, 8, NULL, NULL, 7, 4]);
         assert_eq!(Solution::leaf_similar(t1.clone(), t2.clone()), true);
-        let t3 = build_tree_ignore_parent(&vec![4, 9, 1, 6, 3, 9, 8, null, null, 7, 4, 9, 11]);
+        let t3 = build_tree_ignore_parent(&vec![4, 9, 1, 6, 3, 9, 8, NULL, NULL, 7, 4, 9, 11]);
         assert_eq!(Solution::leaf_similar(t1.clone(), t3.clone()), false)
     }
 }

@@ -130,7 +130,7 @@ mod test {
     use crate::share::*;
     #[test]
     fn test_find_duplcates_tree() {
-        let t = build_tree_ignore_parent(&vec![1, 2, 3, null, 4]);
+        let t = build_tree_ignore_parent(&vec![1, 2, 3, NULL, 4]);
         assert_eq!(
             Solution::print_tree(t),
             vec![

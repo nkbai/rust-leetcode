@@ -9,7 +9,6 @@ pub struct ListNode {
     pub next: Option<Box<ListNode>>,
 }
 pub const NULL: i32 = std::i32::MIN;
-pub const null: i32 = std::i32::MIN;
 impl ListNode {
     #[inline]
     pub fn new(val: i32) -> Self {
@@ -147,7 +146,7 @@ fn buld_tree_ignore_parent_internal(
                 cnt += 1;
                 if let Some(c1) = this_level.next() {
                     //如果为空,相当于已经添加到树上了
-                    if *c1 != null {
+                    if *c1 != NULL {
                         let n = Rc::new(RefCell::new(TreeNode {
                             val: *c1,
                             left: None,
@@ -260,8 +259,8 @@ mod test {
         println!(
             "tree={:?}",
             build_tree_ignore_parent(&vec![
-                4, -7, -3, null, null, -9, -3, 9, -7, -4, null, 6, null, -6, -6, null, null, 0, 6,
-                5, null, 9, null, null, -1, -4, null, null, null, -2
+                4, -7, -3, NULL, NULL, -9, -3, 9, -7, -4, NULL, 6, NULL, -6, -6, NULL, NULL, 0, 6,
+                5, NULL, 9, NULL, NULL, -1, -4, NULL, NULL, NULL, -2
             ])
         );
     }

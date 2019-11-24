@@ -96,7 +96,7 @@ mod test {
     fn test_sorted_list_to_bst() {
         let t = build_tree_ignore_parent(&vec![1, 2, 3, 4, 5, 6]);
         assert_eq!(Solution::is_complete_tree(t), true);
-        let t = build_tree_ignore_parent(&vec![1, 2, 3, 4, 5, null, 7]);
+        let t = build_tree_ignore_parent(&vec![1, 2, 3, 4, 5, NULL, 7]);
         assert_eq!(Solution::is_complete_tree(t), false);
     }
 }

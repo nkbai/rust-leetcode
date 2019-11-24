@@ -84,7 +84,7 @@ mod test {
         //        let t = Solution::find_duplicate_subtrees(build_tree_ignore_parent(&vec![3, 4, 5, 2, 2]));
         //        // println!("t={:?}", t);
         let t = Solution::find_duplicate_subtrees(build_tree_ignore_parent(&vec![
-            1, 2, 3, 4, null, 2, 4, null, null, 4,
+            1, 2, 3, 4, NULL, 2, 4, NULL, NULL, 4,
         ]));
         println!("t={:?}", t);
     }

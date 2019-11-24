@@ -144,11 +144,11 @@ mod tests {
         //        println!("r={}", r.unwrap().borrow().to_string());
         assert_eq!(r, r2);
         let r = Solution::recover_from_preorder(String::from("1-2--3---4-5--6---7"));
-        let r2 = build_tree_ignore_parent(&vec![1, 2, 5, 3, null, 6, null, 4, null, 7]);
+        let r2 = build_tree_ignore_parent(&vec![1, 2, 5, 3, NULL, 6, NULL, 4, NULL, 7]);
         //        println!("r={}", r.unwrap().borrow().to_string());
         assert_eq!(r, r2);
         let r = Solution::recover_from_preorder(String::from("1-401--349---90--88"));
-        let r2 = build_tree_ignore_parent(&vec![1, 401, null, 349, 88, 90]);
+        let r2 = build_tree_ignore_parent(&vec![1, 401, NULL, 349, 88, 90]);
         //        println!("r={}", r.unwrap().borrow().to_string());
         assert_eq!(r, r2);
     }

@@ -139,21 +139,21 @@ mod test {
     fn test_is_sub_tree() {
         assert_eq!(
             Solution::add_one_row(build_tree_ignore_parent(&vec![3, 4, 5, 1, 2]), 1, 1),
-            build_tree_ignore_parent(&vec![1, 3, null, 4, 5, 1, 2])
+            build_tree_ignore_parent(&vec![1, 3, NULL, 4, 5, 1, 2])
         );
 
         assert_eq!(
             Solution::add_one_row(build_tree_ignore_parent(&vec![3, 4, 5, 1, 2]), 1, 2),
-            build_tree_ignore_parent(&vec![3, 1, 1, 4, null, null, 5, 1, 2])
+            build_tree_ignore_parent(&vec![3, 1, 1, 4, NULL, NULL, 5, 1, 2])
         );
         assert_eq!(
             Solution::add_one_row(build_tree_ignore_parent(&vec![3, 4, 5, 1, 2]), 1, 3),
-            build_tree_ignore_parent(&vec![3, 4, 5, 1, 1, 1, 1, 1, null, null, 2])
+            build_tree_ignore_parent(&vec![3, 4, 5, 1, 1, 1, 1, 1, NULL, NULL, 2])
         );
 
         assert_eq!(
             Solution::add_one_row(build_tree_ignore_parent(&vec![3, 4, 5, 1, 2]), 1, 4),
-            build_tree_ignore_parent(&vec![3, 4, 5, 1, 2, null, null, 1, 1, 1, 1])
+            build_tree_ignore_parent(&vec![3, 4, 5, 1, 2, NULL, NULL, 1, 1, 1, 1])
         );
     }
 }

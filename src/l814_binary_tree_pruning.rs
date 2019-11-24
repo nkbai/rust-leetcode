@@ -94,6 +94,6 @@ mod test {
         let t = build_tree_ignore_parent(&vec![1, 1, 0, 1, 1, 0, 1, 0]);
         let r = Solution::prune_tree(t);
         println!("r={}", serialize_tree(r.clone()));
-        assert_eq!(r, build_tree_ignore_parent(&vec![1, 1, 0, 1, 1, null, 1]))
+        assert_eq!(r, build_tree_ignore_parent(&vec![1, 1, 0, 1, 1, NULL, 1]))
     }
 }

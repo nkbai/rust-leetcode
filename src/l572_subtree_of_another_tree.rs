@@ -106,14 +106,14 @@ mod test {
         );
         assert_eq!(
             Solution::is_subtree(
-                build_tree_ignore_parent(&vec![3, 4, 5, 1, 2, null, null, null, null, 0]),
+                build_tree_ignore_parent(&vec![3, 4, 5, 1, 2, NULL, NULL, NULL, NULL, 0]),
                 build_tree_ignore_parent(&vec![4, 1, 2])
             ),
             false
         );
         assert_eq!(
             Solution::is_subtree(
-                build_tree_ignore_parent(&vec![3, 4, 5, 1, null, 2]),
+                build_tree_ignore_parent(&vec![3, 4, 5, 1, NULL, 2]),
                 build_tree_ignore_parent(&vec![3, 1, 2])
             ),
             false

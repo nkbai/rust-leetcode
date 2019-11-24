@@ -89,7 +89,7 @@ mod tests {
 
     #[test]
     fn test_lru() {
-        let t = build_tree_ignore_parent(&vec![7, 3, 15, null, null, 9, 20]);
+        let t = build_tree_ignore_parent(&vec![7, 3, 15, NULL, NULL, 9, 20]);
         let mut bst = BSTIterator::new(t);
         assert_eq!(bst.next(), 3);
         assert_eq!(bst.has_next(), true);

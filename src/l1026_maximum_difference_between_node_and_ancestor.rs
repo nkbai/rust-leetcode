@@ -124,7 +124,7 @@ mod tests {
         //        let r2 = build_tree_ignore_parent(&vec![8, 3, 10, 1, 6, null, 14, null, null, 4, 7, 13]);
         //        assert_eq!(Solution::max_ancestor_diff(r2), 7);
 
-        let r2 = build_tree_ignore_parent(&vec![1, null, 2, null, 0, 3]);
+        let r2 = build_tree_ignore_parent(&vec![1, NULL, 2, NULL, 0, 3]);
         assert_eq!(Solution::max_ancestor_diff(r2), 3);
     }
 }

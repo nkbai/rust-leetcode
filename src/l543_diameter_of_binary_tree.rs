@@ -84,8 +84,8 @@ mod test {
         //            2
         //        );
         let t = build_tree_ignore_parent(&vec![
-            4, -7, -3, null, null, -9, -3, 9, -7, -4, null, 6, null, -6, -6, null, null, 0, 6, 5,
-            null, 9, null, null, -1, -4, null, null, null, -2,
+            4, -7, -3, NULL, NULL, -9, -3, 9, -7, -4, NULL, 6, NULL, -6, -6, NULL, NULL, 0, 6, 5,
+            NULL, 9, NULL, NULL, -1, -4, NULL, NULL, NULL, -2,
         ]);
         println!("t={:?}", t);
         assert_eq!(Solution::diameter_of_binary_tree(t), 8);

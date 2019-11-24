@@ -82,7 +82,7 @@ mod test {
         let t = Solution::construct_maximum_binary_tree(vec![3, 2, 1, 6, 0, 5]);
         assert_eq!(
             t,
-            build_tree_ignore_parent(&vec![6, 3, 5, null, 2, 0, null, null, 1])
+            build_tree_ignore_parent(&vec![6, 3, 5, NULL, 2, 0, NULL, NULL, 1])
         )
     }
 }

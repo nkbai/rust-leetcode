@@ -151,7 +151,7 @@ mod test {
     use crate::share::*;
     #[test]
     fn test_find_duplcates_tree() {
-        let t = build_tree_ignore_parent(&vec![3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]);
+        let t = build_tree_ignore_parent(&vec![3, 5, 1, 6, 2, 0, 8, NULL, NULL, 7, 4]);
         let r = Solution::distanceK(t.clone(), 5, 2);
         let mut s = HashSet::new();
         s.insert(7);
