@@ -103,6 +103,8 @@ mod l535_encode_and_decode_tinyurl;
 mod l538_convert_bst_to_greater_tree;
 mod l538_convert_bst_to_greater_tree2;
 mod l543_diameter_of_binary_tree;
+mod l554_brick_wall;
+mod l560_subarray_sum_equals_k;
 mod l563_binary_tree_tilt;
 mod l572_subtree_of_another_tree;
 mod l622_design_circular_queue;
