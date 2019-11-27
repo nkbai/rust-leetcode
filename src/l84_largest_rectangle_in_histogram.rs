@@ -33,7 +33,27 @@
 考虑到矩形的面积是由最矮的柱子决定的,
 那么只要记录[j,i]之间最矮的柱子,那么[j,i]的面积就决定了是(i-j+1)*min
 */
-
+use std::cmp::{max, min};
+struct Solution {}
+impl Solution {
+    pub fn largest_rectangle_area(heights: Vec<i32>) -> i32 {
+        let mut lowest = Vec::new();
+        heights.iter().for_each(|_| {
+            lowest.push(0);
+        });
+        let mut max_area = 0;
+        //lowest[j]表示从当前i到j的最矮的柱子高度
+        for i in 0..heights.len() {
+            lowest[i] = heights[i]; //从i到i的最矮柱子就是i本身
+            max_area = max(max_area, heights[i]);
+            for j in (0..i).rev() {
+                lowest[j] = min(heights[i], lowest[j]); //[j,i]区间
+                max_area = max(max_area, (i - j + 1) as i32 * lowest[j]);
+            }
+        }
+        max_area
+    }
+}
 #[cfg(test)]
 mod test {
     use super::*;

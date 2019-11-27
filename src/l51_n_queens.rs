@@ -1,31 +1,39 @@
 /*
-166. 分数到小数
+51. N皇后
+n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
 
-给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以字符串形式返回小数。
 
-如果小数部分为循环小数，则将循环的部分括在括号内。
 
-示例 1:
+上图为 8 皇后问题的一种解法。
 
-输入: numerator = 1, denominator = 2
-输出: "0.5"
-示例 2:
+给定一个整数 n，返回所有不同的 n 皇后问题的解决方案。
 
-输入: numerator = 2, denominator = 1
-输出: "2"
-示例 3:
+每一种解法包含一个明确的 n 皇后问题的棋子放置方案，该方案中 'Q' 和 '.' 分别代表了皇后和空位。
 
-输入: numerator = 2, denominator = 3
-输出: "0.(6)"
+示例:
+
+输入: 4
+输出: [
+ [".Q..",  // 解法 1
+  "...Q",
+  "Q...",
+  "..Q."],
+
+ ["..Q.",  // 解法 2
+  "Q...",
+  "...Q",
+  ".Q.."]
+]
+解释: 4 皇后问题存在两个不同的解法。
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/fraction-to-recurring-decimal
+链接：https://leetcode-cn.com/problems/n-queens
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
 /*
 思路:
-
+典型的递归回溯问题,暴力穷举就ok了
 */
 struct Solution {}
 impl Solution {

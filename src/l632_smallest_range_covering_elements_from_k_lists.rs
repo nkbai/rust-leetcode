@@ -54,7 +54,7 @@ O(Nlogk)
 */
 struct Solution {}
 use std::cmp::Ordering;
-use std::collections::{BTreeMap, BinaryHeap};
+use std::collections::BinaryHeap;
 
 #[derive(Clone, Eq, PartialEq)]
 struct Element(Vec<i32>, usize); //第一个元素是数组本身,第二个则是他的编号
