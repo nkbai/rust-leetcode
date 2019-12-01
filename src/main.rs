@@ -94,6 +94,8 @@ mod l380_insert_delete_getrandom_o1;
 mod l389_find_the_difference;
 mod l402_remove_k_digits;
 mod l409_longest_palindrome;
+mod l42_traping_rain_water;
+mod l42_traping_rain_water_2;
 mod l438_find_all_anagrams_in_a_string;
 mod l454_sum_2;
 mod l463_island_perimeter;
