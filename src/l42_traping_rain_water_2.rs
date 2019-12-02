@@ -31,62 +31,28 @@
 弹出2,增加(min(5,2)-2)*3
 弹出2, 增加(min(5,5)-2)*4
 */
+use std::cmp::min;
+
 struct Solution {}
 impl Solution {
     pub fn trap(height: Vec<i32>) -> i32 {
         let mut stack = Vec::new();
         let mut total = 0;
-        for (i, h) in height.iter().enumerate() {
-            if *h == 0 {
-                continue;
-            }
-            if stack.len() <= 0 {
-                stack.push((*h, i, 0, 0)); //height,下标,左边雨水的面积,左边柱子的面积
-                continue;
-            }
-            let mut c = (*h, i, 0, 0);
-            let mut top = *stack.last().unwrap();
-            /*
-            top保存的是已经计算的雨水的面积,柱子的面积
-            来了一个新的高度,需要考虑两部分
-            1. top 到current之间的步伐
-            2. top上已经计算的
-             */
-            while top.0 <= c.0 {
-                //只要不是递减栈,一直弹出,并计算
-                let mut yu = 0;
-                let mut zhu = 0;
-                yu = (i as i32 - top.1 as i32) * top.0;
-                zhu = top.0 + c.3;
-                yu -= zhu;
-                c.2 = yu + top.2;
-                c.3 = zhu + top.3;
-                stack.pop();
-                if stack.len() > 0 {
-                    top = *stack.last().unwrap();
-                } else {
+        for i in 0..height.len() {
+            //要把0也放进去,把0放进去,简化了很多问题
+            while stack.len() > 0 && height[*stack.last().unwrap()] < height[i] {
+                let pop_top = stack.pop().unwrap();
+                if stack.is_empty() {
                     break;
                 }
+                let top = *stack.last().unwrap();
+                let distance = i - top - 1;
+                let height = min(height[i], height[top]) - height[pop_top];
+                total += height * distance as i32
             }
-            println!("push={:?}", c);
-            stack.push(c);
+            //            println!("push {}={}", i, height[i]);
+            stack.push(i);
         }
-        println!("stack={:?}", stack);
-        /*
-        栈上现在保存的由高到底的柱子,这时候要计算他们之间可以保存的雨水有多少
-        */
-        while stack.len() >= 2 {
-            let top = stack.pop().unwrap();
-            let last = *stack.last_mut().unwrap();
-            let mut yu = top.0 * (top.1 as i32 - last.1 as i32);
-            let zhu = top.0 + top.3;
-            yu -= zhu;
-            total += yu;
-        }
-        if stack.len() == 1 {
-            total += stack[0].2;
-        }
-
         total
     }
 }
