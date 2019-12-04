@@ -1,3 +1,5 @@
+#[allow(dead_code)]
+#[allow(unused_imports)]
 #[macro_use]
 #[allow(unused)]
 extern crate foreign_types;
@@ -78,6 +80,7 @@ mod l173_binary_search_tree_iterator;
 mod l187_repeated_dna_sequences;
 mod l199_binary_tree_right_side_view;
 mod l1_two_sum;
+mod l200_numbers_of_islands;
 mod l206_reverse_linked_list;
 mod l215_kth_largest_element_in_an_array;
 mod l220_contains_duplicate_iii;
@@ -92,6 +95,7 @@ mod l297_serialize_deserialize_binary_tree;
 mod l30_substring_with_concatenation_of_all_words;
 mod l30_substring_with_concatenation_of_all_words_2;
 mod l31_next_permutation;
+mod l329_longest_increasing_path_in_a_matrix;
 mod l337_house_robber_3l;
 mod l36_valid_sudoku;
 mod l380_insert_delete_getrandom_o1;
@@ -103,11 +107,14 @@ mod l42_traping_rain_water_2;
 mod l438_find_all_anagrams_in_a_string;
 mod l454_sum_2;
 mod l463_island_perimeter;
+mod l476_number_complement;
+mod l488_zuma_game;
 mod l49_group_anagrams;
 mod l4_median_of_two_sorted_arrays;
 mod l513_find_bottom_left_tree_value;
 mod l515_find_largest_value_in_each_tree;
 mod l51_n_queens;
+mod l523_continuous_subarray_sum;
 mod l525_contiguous_array;
 mod l530_minimum_absolute_difference_in_bst;
 mod l535_encode_and_decode_tinyurl;
@@ -129,10 +136,12 @@ mod l652_find_duplicate_subtrees;
 mod l654_maximum_binary_tree;
 mod l655_print_binary_tree;
 mod l662_maximum_width_of_binary_tree;
+mod l687_longest_univalue_path;
 mod l701_insert_into_a_bst;
 mod l704_binary_search;
 mod l713_subarray_product_less_than_k;
 mod l76_mininum_window_substring;
+mod l78_subsets;
 mod l79_word_search;
 mod l814_binary_tree_pruning;
 mod l834_sum_of_distances_in_tree;

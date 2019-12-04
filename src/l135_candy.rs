@@ -44,14 +44,13 @@
 */
 struct Solution {}
 impl Solution {
-    pub fn candy(ratings: Vec<i32>) -> i32 {}
+    pub fn candy(ratings: Vec<i32>) -> i32 {
+        0
+    }
 }
 #[cfg(test)]
 mod test {
-    use super::*;
-    use crate::share::*;
+
     #[test]
-    fn test() {
-        let t = Solution::solve_n_queens(4);
-    }
+    fn test() {}
 }

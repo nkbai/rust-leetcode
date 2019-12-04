@@ -48,6 +48,7 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
+
     #[test]
     fn test() {
         let t = Solution::check_subarray_sum(vec![23, 2, 7, 6, 7], 6);

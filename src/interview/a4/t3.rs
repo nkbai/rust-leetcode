@@ -53,7 +53,6 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::share::*;
     #[test]
     fn test() {
         let t = Solution::subsets_with_dup(vec![1, 1, 2, 2, 2]);

@@ -159,7 +159,7 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::share::*;
+
     #[test]
     fn test() {
         let t = Solution::solve_n_queens(4);

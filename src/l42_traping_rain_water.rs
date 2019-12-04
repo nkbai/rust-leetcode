@@ -87,7 +87,6 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::share::*;
     #[test]
     fn test() {
         let t = Solution::trap(vec![0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]);

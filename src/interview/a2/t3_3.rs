@@ -52,7 +52,7 @@ struct Solution {}
 A*算法
 */
 use std::cmp::Ordering;
-use std::collections::{BTreeMap, BinaryHeap, HashMap, HashSet};
+use std::collections::{BinaryHeap, HashSet};
 
 /**
 使用启发函数来估算从起始点到终点的距离
@@ -80,7 +80,7 @@ impl Ord for Info {
 }
 //可以确定的是两个节点不会相同
 impl PartialEq for Info {
-    fn eq(&self, other: &Self) -> bool {
+    fn eq(&self, _other: &Self) -> bool {
         return false;
     }
 }
@@ -95,7 +95,7 @@ impl Solution {
         for i in 0..forest.len() {
             for j in 0..forest[0].len() {
                 if forest[i][j] > 1 {
-                    v.push(((forest[i][j], (i, j))))
+                    v.push((forest[i][j], (i, j)))
                 }
             }
         }
@@ -194,7 +194,6 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::share::*;
     #[test]
     fn test() {
         let t = Solution::cut_off_tree(vec![

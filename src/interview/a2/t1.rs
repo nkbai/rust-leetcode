@@ -16,9 +16,9 @@ struct Solution {}
 impl Solution {
     pub fn generate_matrix(n: i32) -> Vec<Vec<i32>> {
         let mut matrix = Vec::new();
-        for i in 0..n {
+        for _ in 0..n {
             let mut v = Vec::new();
-            for j in 0..n {
+            for _ in 0..n {
                 v.push(0);
             }
             matrix.push(v);
@@ -97,7 +97,6 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::share::*;
     #[test]
     fn test() {
         let t = Solution::generate_matrix(1);

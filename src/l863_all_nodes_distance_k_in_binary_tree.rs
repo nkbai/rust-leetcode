@@ -51,7 +51,7 @@ use std::rc::Rc;
 
 struct Solution {}
 impl Solution {
-    pub fn distanceK(root: Option<Rc<RefCell<TreeNode>>>, target: i32, K: i32) -> Vec<i32> {
+    pub fn distance_k(root: Option<Rc<RefCell<TreeNode>>>, target: i32, K: i32) -> Vec<i32> {
         let mut h = HashSet::new();
         Self::internal(root, target, K, -1, &mut h, &mut false);
         h.iter().map(|n| *n).collect()
@@ -152,7 +152,7 @@ mod test {
     #[test]
     fn test_find_duplcates_tree() {
         let t = build_tree_ignore_parent(&vec![3, 5, 1, 6, 2, 0, 8, NULL, NULL, 7, 4]);
-        let r = Solution::distanceK(t.clone(), 5, 2);
+        let r = Solution::distance_k(t.clone(), 5, 2);
         let mut s = HashSet::new();
         s.insert(7);
         s.insert(4);
@@ -161,7 +161,7 @@ mod test {
         let s2: HashSet<i32> = r.iter().map(|n| *n).collect();
         assert_eq!(s, s2);
 
-        let r = Solution::distanceK(t.clone(), 8, 2);
+        let r = Solution::distance_k(t.clone(), 8, 2);
         let mut s = HashSet::new();
         s.insert(0);
         s.insert(3);
