@@ -112,7 +112,6 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::share::*;
     #[test]
     fn test() {
         //[3,2,3,1,2,4,5,5,6] 和 k = 4

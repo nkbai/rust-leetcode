@@ -47,14 +47,14 @@
 use std::collections::{BTreeMap, HashMap, HashSet};
 
 struct Solution {}
-struct node {
+struct Node {
     val: i32,
     row: usize,
     col: usize,
 }
-impl node {
+impl Node {
     fn new(val: i32, row: usize, col: usize) -> Self {
-        node { val, row, col }
+        Node { val, row, col }
     }
 }
 impl Solution {
@@ -64,7 +64,7 @@ impl Solution {
         for i in 0..forest.len() {
             for j in 0..forest[0].len() {
                 if forest[i][j] > 1 {
-                    let mut n = node::new(forest[i][j], i, j);
+                    let mut n = Node::new(forest[i][j], i, j);
                     m.insert(n.val, n);
                 }
             }
@@ -89,7 +89,7 @@ impl Solution {
             mins.insert((start.0, start.1, total_row - 1, total_col - 1), step);
         }
         let mut total_step = 0;
-        for (val, n) in m {
+        for (_, n) in m {
             let step = mins.get(&(start.0, start.1, n.row, n.col));
             if step.is_none() {
                 return -1;
@@ -164,7 +164,6 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::share::*;
     #[test]
     fn test() {
         let t = Solution::cut_off_tree(vec![vec![1, 2, 3], vec![0, 0, 4], vec![7, 6, 5]]);

@@ -30,7 +30,6 @@
 */
 
 use std::cmp::min;
-use std::iter::Rev;
 
 struct Solution {}
 impl Solution {

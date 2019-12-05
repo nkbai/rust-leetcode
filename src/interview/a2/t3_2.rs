@@ -52,17 +52,16 @@ struct Solution {}
 A*算法
 */
 use std::cmp::Ordering;
-use std::collections::{BTreeMap, BinaryHeap, HashMap, HashSet};
-use std::iter::Rev;
+use std::collections::BinaryHeap;
 
-struct node {
+struct Node {
     val: i32,
     pos: usize,
     neighbors: Vec<usize>,
 }
-impl node {
+impl Node {
     fn new(val: i32, row: usize, col: usize, column_count: usize) -> Self {
-        node {
+        Node {
             val,
             pos: row * column_count + col,
             neighbors: Vec::new(),
@@ -86,7 +85,7 @@ f(n)=g(n)+h(n)
 struct DistanceToTarget<'a> {
     distance: usize,
     distance_to_from: usize,
-    n: &'a node, //节点n距离目标的距离
+    n: &'a Node, //节点n距离目标的距离
 }
 impl<'a> Eq for DistanceToTarget<'a> {}
 impl<'a> Ord for DistanceToTarget<'a> {
@@ -98,7 +97,7 @@ impl<'a> Ord for DistanceToTarget<'a> {
 }
 //可以确定的是两个节点不会相同
 impl<'a> PartialEq for DistanceToTarget<'a> {
-    fn eq(&self, other: &Self) -> bool {
+    fn eq(&self, _other: &Self) -> bool {
         return false;
     }
 }
@@ -110,17 +109,16 @@ impl<'a> PartialOrd for DistanceToTarget<'a> {
     }
 }
 impl Solution {
-    fn build_graph(forest: &Vec<Vec<i32>>) -> (Vec<node>, Vec<(i32, usize)>) {
+    fn build_graph(forest: &Vec<Vec<i32>>) -> (Vec<Node>, Vec<(i32, usize)>) {
         let mut g = Vec::new();
         let mut trees = Vec::new();
         let row_count = forest.len();
         let col_count = forest[0].len();
-        let mut index = 0;
         //建立一张图
         for i in 0..forest.len() {
             for j in 0..forest[0].len() {
                 let t = forest[i][j];
-                let mut n = node::new(t, i, j, col_count);
+                let mut n = Node::new(t, i, j, col_count);
                 if t >= 1 {
                     let neighbors = Self::get_next((i, j), row_count, col_count);
                     neighbors.iter().for_each(|item| {
@@ -142,14 +140,14 @@ impl Solution {
         (g, trees) //数组的索引是row*i+j neighbor的描述也是使用的这个下标
     }
     pub fn cut_off_tree(forest: Vec<Vec<i32>>) -> i32 {
-        let mut index = 0;
+        let mut _index = 0;
         //        for i in forest.as_slice() {
         //            for j in i.as_slice() {
         //                println!("{},{}", *j, index);
         //                index += 1;
         //            }
         //        }
-        let mut prev_1 = 0x70000000;
+
         if forest.len() <= 0 || forest[0].len() <= 0 {
             return -1;
         }
@@ -203,7 +201,7 @@ impl Solution {
     fn mininum_distance(
         start: usize,
         target: usize,
-        g: &Vec<node>,
+        g: &Vec<Node>,
         row_count: usize,
         col_count: usize,
     ) -> i32 {
@@ -264,7 +262,6 @@ impl Solution {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::share::*;
     #[test]
     fn test() {
         let t = Solution::cut_off_tree(vec![

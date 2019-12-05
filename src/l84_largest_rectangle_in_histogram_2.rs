@@ -49,7 +49,7 @@ a[stack[top]]*(a.len()-stack[top-1])
 /*
 递增栈递减栈用好了,真是一种魔术啊
 */
-use std::cmp::{max, min};
+use std::cmp::max;
 struct Solution {}
 impl Solution {
     fn get_value(heights: &Vec<i32>, index: i32) -> i32 {
