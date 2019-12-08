@@ -72,6 +72,7 @@ mod l124_binary_tree_maximum_path_sum;
 mod l128_longest_consecutive_sequence;
 mod l129_sum_root_to_leaf_numbers;
 mod l135_candy;
+mod l143_reorder_list;
 mod l144_binary_tree_preorder_traversal;
 mod l146_lru_cach3;
 mod l146_lru_cache;
