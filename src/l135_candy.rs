@@ -31,26 +31,154 @@
 1. 首先原则是贪心,尽可能的少给
 2. 分数看成从低到高,再从高到低的变化过程
 3. 要求最高点要同时满足左右两边的需求
-4. 如果碰到相等连续相等的两个数,则当做一个从高到低的变化
+4. 如果碰到相等连续相等的多个数,则等到有变化再参与计算
 
 只需计数单调增和单调减的个数即可,不用关心他们彼此的差距.
 特殊情况:
 就是连续相等的情况
-比如1,2,3,3,2,1
-那么第二个三和第一个三只能一样多
-如果是1,2,3,3,1,那么第二个三应该给2个
-如果是1,2,3,3,3,1,那么第一个3是三个,第二个3只需1个,第三个3则是2个
-如果是1,2,2,3,那么第一个2则是2个,第二个2只需1个,从而总数只需4个
+比如1,2,3,3,3,2,1
+ 则应该把第一个3视作左边的,最后一个3视作右边的,中间的3都设置为1
 */
+use std::cmp::{max, Ordering};
+
 struct Solution {}
 impl Solution {
     pub fn candy(ratings: Vec<i32>) -> i32 {
-        0
+        let mut is_up = true; //0表示向上增的趋势,1表示向下的趋势
+        match ratings.len() {
+            0 => {
+                return 0;
+            }
+            1 => {
+                return 1;
+            }
+            2 => {
+                if ratings[0] == ratings[1] {
+                    return 2;
+                } else {
+                    return 3;
+                }
+            }
+            _ => {
+                if ratings[0] < ratings[1] {
+                    is_up = true;
+                } else {
+                    is_up = false; //不是升序,直接当作降序
+                }
+            }
+        }
+        let mut up_count = 0;
+        let mut down_count = 0;
+        let mut equals = 0;
+        let mut last = 0;
+        let mut total = 0;
+        if is_up {
+            last = 0;
+        } else {
+            last = std::i32::MAX;
+        }
+        for i in 0..ratings.len() {
+            let order = last.cmp(&ratings[i]);
+            if order == Ordering::Equal {
+                equals += 1;
+                continue;
+            }
+            last = ratings[i];
+            //            已经发生了不等,这时候就要考虑想等部分如何处理了
+            if equals >= 1 {
+                if is_up {
+                    let c = up_count * (up_count + 1) / 2; //把第一个相等算在这个趋势中,另一个算在另一个趋势中
+                    total += c;
+                } else {
+                    let m = max(down_count, up_count);
+                    let c = down_count * (down_count - 1) / 2;
+                    total += c;
+                    total += up_count * (up_count - 1) / 2;
+                    total += m;
+                }
+                is_up = (order == Ordering::Less);
+                if is_up {
+                    up_count = 2;
+                    down_count = 0;
+                } else {
+                    down_count = 2;
+                    up_count = 0;
+                }
+                equals -= 1;
+                total += equals; //中间的等数都是1
+                equals = 0;
+                continue;
+            }
+            equals = 0;
+            if is_up == (order == Ordering::Less) {
+                if is_up {
+                    up_count += 1;
+                } else {
+                    down_count += 1;
+                }
+            } else {
+                //趋势发生了变化
+                if is_up {
+                    //由上升变为下降,先不计算,等等
+                    down_count += 2;
+                } else {
+                    //下降变为了上升,开始计算上一波的上升到下降
+                    let m = max(up_count, down_count);
+                    let c1 = up_count * (up_count - 1) / 2;
+                    let c2 = down_count * (down_count - 1) / 2;
+                    total += m;
+                    total += c1 + c2 - 1; //最后一个个数计入下一个趋势
+                    up_count = 2;
+                    down_count = 0;
+                }
+                is_up = !is_up;
+            }
+        }
+        let m = max(down_count, up_count);
+        let c1 = up_count * (up_count - 1) / 2;
+        let c2 = down_count * (down_count - 1) / 2;
+        total += m;
+        total += c1 + c2;
+        total += equals; //考虑到最后以相等结尾
+        total
+    }
+    fn need_clear() {
+        //        let mut a1 = 0;
+        //        let mut a2 = 0;
+        //        let mut a3 = 0;
+        //        let mut state = 1;
+        //        let clear_a1_a2 = || {
+        //            a1 = 0;
+        //            a2 = 0;
+        //        };
+        //        let clear_a2_a3 = || {
+        //            a2 = 0;
+        //            a3 = 0;
+        //        };
+        //        if state == 1 {
+        //            //do something else
+        //            clear_a1_a2();
+        //        } else if state == 2 {
+        //            //do somthing else
+        //            clear_a1_a2();
+        //        } else {
+        //            //do something else
+        //            clear_a2_a3();
+        //        }
     }
 }
 #[cfg(test)]
 mod test {
+    use crate::l135_candy::Solution;
 
     #[test]
-    fn test() {}
+    fn test() {
+        assert_eq!(Solution::candy(vec![1, 2, 3, 3, 2, 1]), 12);
+        assert_eq!(Solution::candy(vec![5, 4, 3, 3, 4, 5]), 12);
+        assert_eq!(Solution::candy(vec![5, 4, 3, 3, 3, 3, 4, 5]), 14);
+        assert_eq!(Solution::candy(vec![1, 2, 3, 3, 3, 3, 4, 5]), 14);
+        assert_eq!(Solution::candy(vec![1, 0, 2]), 5);
+        assert_eq!(Solution::candy(vec![1, 4, 4]), 4);
+        assert_eq!(Solution::candy(vec![1, 3, 2, 2, 1]), 7);
+    }
 }
