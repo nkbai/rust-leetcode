@@ -126,6 +126,7 @@ mod l454_sum_2;
 mod l463_island_perimeter;
 mod l476_number_complement;
 mod l488_zuma_game;
+mod l494_target_sum;
 mod l49_group_anagrams;
 mod l4_median_of_two_sorted_arrays;
 mod l513_find_bottom_left_tree_value;
