@@ -58,7 +58,7 @@ impl Solution {
         //最后一个数只有一个,也要添加进来
         if cur.cnt == 1 {
             rnhead.as_mut().unwrap().next = Some(Box::new(ListNode::new(cur.val)));
-            rnhead = rnhead.unwrap().next.as_mut();
+            //rnhead = rnhead.unwrap().next.as_mut(); todo 这个赋值真的没有用? 编译器分析出来的
         }
         nhead.unwrap().next
     }

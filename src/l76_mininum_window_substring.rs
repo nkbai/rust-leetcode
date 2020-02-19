@@ -69,9 +69,11 @@ impl Term {
         self.count -= 1;
         self.check_result()
     }
+    #[allow(dead_code)]
     fn reset(&mut self) {
         self.count = 0;
     }
+    #[allow(dead_code)]
     fn is_match(&self) -> bool {
         return self.expect == self.count;
     }

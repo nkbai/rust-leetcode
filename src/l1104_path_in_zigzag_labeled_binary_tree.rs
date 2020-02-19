@@ -51,22 +51,22 @@ struct Solution;
 impl Solution {
     pub fn path_in_zig_zag_tree(label: i32) -> Vec<i32> {
         let mut v = Vec::new();
-        let mut isFirst = true;
+        let mut is_first = true;
         let mut cur_pos = label;
         while cur_pos > 0 {
             let first_one_pos = 32 - cur_pos.leading_zeros(); // leading_zero(cur_pos as u32);
             println!("cur={},first_one_pos={}", cur_pos, first_one_pos);
-            let isEven = first_one_pos % 2 == 0; //第一个1是奇数行,从1开始
+            let is_even = first_one_pos % 2 == 0; //第一个1是奇数行,从1开始
             let mut order_num = cur_pos;
-            if isEven {
+            if is_even {
                 //偶数行需要转换
                 let first = 1 << (first_one_pos - 1); //针对8-15,范围是1000到1111,first_one_pos=4
                 let end = (1 << first_one_pos) - 1;
                 order_num = end - (order_num - first);
             }
-            if isFirst {
+            if is_first {
                 v.insert(0, cur_pos);
-                isFirst = false;
+                is_first = false;
                 cur_pos = order_num; //第一个数是逆序,需要保证真正的位置
             } else {
                 v.insert(0, order_num); //除第一个值以外都应该使用对应位置上的值,而不是位置本身

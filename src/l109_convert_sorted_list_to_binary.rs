@@ -41,18 +41,18 @@ impl Solution {
         }
         let left = nodes.len() / 2;
         let right = nodes.len() / 2 + 1;
-        let mut leftNode: Option<Rc<RefCell<TreeNode>>> = None;
-        let mut rightNode = None;
+        let mut left_node: Option<Rc<RefCell<TreeNode>>> = None;
+        let mut right_node = None;
         if left > 0 {
-            leftNode = Solution::build_tree(&nodes[0..left]);
+            left_node = Solution::build_tree(&nodes[0..left]);
         }
         if right <= nodes.len() - 1 {
-            rightNode = Solution::build_tree(&nodes[right..nodes.len()])
+            right_node = Solution::build_tree(&nodes[right..nodes.len()])
         }
         Some(Rc::new(RefCell::new(TreeNode {
             val: nodes[nodes.len() / 2],
-            left: leftNode,
-            right: rightNode,
+            left: left_node,
+            right: right_node,
         })))
     }
     fn list_to_vec(head: Option<Box<ListNode>>) -> Vec<i32> {

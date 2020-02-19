@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 /*
 166. 分数到小数
 
@@ -30,6 +31,7 @@
 
 struct Solution {}
 impl Solution {
+    #[allow(dead_code)]
     pub fn fraction_to_decimal(_numerator: i32, _denominator: i32) -> String {
         panic!("not implement")
     }

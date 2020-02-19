@@ -46,8 +46,8 @@ impl Solution {
             return 0;
         }
         while let Some(r) = root {
-            let hl = Solution::treeHeight(r.as_ref().clone().borrow().left.clone());
-            let hr = Solution::treeHeight(r.as_ref().clone().borrow().right.clone());
+            let hl = Solution::tree_height(r.as_ref().clone().borrow().left.clone());
+            let hr = Solution::tree_height(r.as_ref().clone().borrow().right.clone());
             if hl == 0 {
                 break; //走到底了
             }
@@ -63,7 +63,7 @@ impl Solution {
         }
         2.0_f32.powi(height) as i32 + lastnum
     }
-    pub fn treeHeight(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+    pub fn tree_height(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         let mut root = root;
         let mut height = 0;
         while let Some(r) = root {

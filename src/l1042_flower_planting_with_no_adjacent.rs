@@ -55,7 +55,8 @@ impl Solution {
             Solution::dfs(*n, adj, marked);
         }
     }
-    fn isMarked(c: i32, marked: &Vec<i32>) -> bool {
+    #[allow(dead_code)]
+    fn is_marked(c: i32, marked: &Vec<i32>) -> bool {
         return marked[c as usize] == 0;
     }
     fn mark(c: i32, marked: &mut Vec<i32>, adj: &Vec<Vec<i32>>) {

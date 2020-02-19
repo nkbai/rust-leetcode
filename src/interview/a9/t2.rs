@@ -29,8 +29,6 @@
 使用部分快速排序
 */
 
-use std::cmp::{max, min};
-
 struct Solution {}
 impl Solution {
     pub fn k_closest(points: Vec<Vec<i32>>, k: i32) -> Vec<Vec<i32>> {

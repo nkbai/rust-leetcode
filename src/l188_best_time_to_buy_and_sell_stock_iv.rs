@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 /*
 188. 买卖股票的最佳时机 IV
 给定一个数组，它的第 i 个元素是一支给定的股票在第 i 天的价格。
@@ -95,7 +96,7 @@ impl Solution {
         if k == 0 || prices.len() == 0 {
             return 0;
         }
-        let mut k = k as usize;
+        let k = k as usize;
         if k >= prices.len() {
             return Self::simple_max_profit(&prices);
         }
@@ -124,6 +125,7 @@ impl Solution {
         dp[0][0]
     }
     //没必要动态分配那么多,因为至于上一个状态有关
+    #[allow(dead_code)]
     pub fn max_profit3(k: i32, prices: Vec<i32>) -> i32 {
         if k == 0 || prices.len() == 0 {
             return 0;
@@ -158,6 +160,7 @@ impl Solution {
         dp[0][0]
     }
     //内存占用超限
+    #[allow(dead_code)]
     pub fn max_profit2(k: i32, prices: Vec<i32>) -> i32 {
         if k == 0 || prices.len() == 0 {
             return 0;

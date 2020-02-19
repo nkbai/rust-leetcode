@@ -44,10 +44,10 @@ impl Solution {
         }
     }
     pub fn generate_parenthesis(n: i32) -> Vec<String> {
-        let mut left = n;
-        let mut right = n;
+        let left = n;
+        let right = n;
         let mut res = Vec::new();
-        let mut cur = Vec::new();
+        let cur = Vec::new();
         Self::generate_internal(left, right, &cur, &mut res);
         res
     }

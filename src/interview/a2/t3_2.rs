@@ -55,6 +55,7 @@ use std::cmp::Ordering;
 use std::collections::BinaryHeap;
 
 struct Node {
+    #[allow(dead_code)]
     val: i32,
     pos: usize,
     neighbors: Vec<usize>,
@@ -154,7 +155,7 @@ impl Solution {
         if forest[0][0] == 0 {
             return -1;
         }
-        let (g, mut trees) = Self::build_graph(&forest);
+        let (g, trees) = Self::build_graph(&forest);
         if trees.len() <= 0 {
             return 0;
         }
@@ -202,7 +203,7 @@ impl Solution {
         start: usize,
         target: usize,
         g: &Vec<Node>,
-        row_count: usize,
+        _row_count: usize,
         col_count: usize,
     ) -> i32 {
         if start == target {

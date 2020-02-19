@@ -29,7 +29,7 @@
 */
 struct Solution {}
 impl Solution {
-    pub fn solve_n_queens(n: i32) -> i32 {
+    pub fn solve_n_queens(_n: i32) -> i32 {
         0
     }
 }

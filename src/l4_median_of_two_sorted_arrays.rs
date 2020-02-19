@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 /*
 4. 寻找两个有序数组的中位数
 
@@ -31,7 +32,8 @@ nums2 = [3, 4]
 */
 struct Solution {}
 impl Solution {
-    pub fn find_median_sorted_arrays(nums1: Vec<i32>, nums2: Vec<i32>) -> f64 {
+    #[allow(dead_code)]
+    pub fn find_median_sorted_arrays(_nums1: Vec<i32>, _nums2: Vec<i32>) -> f64 {
         0.0
     }
 }

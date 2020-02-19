@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 /*
 36. 有效的数独
 
@@ -64,12 +65,12 @@
 个人感觉还不如逐行逐列判断.
 但是如果是在动态的求数独的过程中,显然一遍遍历的方式更合适.
 */
-
 use std::collections::HashMap;
 
 struct Solution;
 
 impl Solution {
+    #[allow(dead_code)]
     pub fn is_valid_sudoku(board: Vec<Vec<char>>) -> bool {
         let mut rows = Vec::new();
         let mut cols = Vec::new(); //行列

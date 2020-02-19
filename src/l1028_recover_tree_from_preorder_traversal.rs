@@ -45,7 +45,7 @@
 思路:
 1. 递归处理
 参数 1. 当前节点, 2 当前深度 3 剩下的待处理字节序列
-2. nextDepth 获取下一个节点的深度
+2. next_depth 获取下一个节点的深度
 3. 如果 下一个深度和当前深度一样,则不处理,返回
 4. 如果下一个深度是当前深度+1,如果没有左子节点则挂在左子树上,否则挂在右子树上
 */
@@ -59,7 +59,7 @@ struct Solution;
 
 impl Solution {
     pub fn recover_from_preorder(s: String) -> Option<Rc<RefCell<TreeNode>>> {
-        let (left, val) = Self::nextVal(s.as_bytes());
+        let (left, val) = Self::next_val(s.as_bytes());
         let root = Rc::new(RefCell::new(TreeNode {
             left: None,
             right: None,
@@ -72,11 +72,11 @@ impl Solution {
         if left.len() == 0 {
             return left;
         }
-        let (new_left, next_depth) = Self::nextDepth(left);
+        let (new_left, next_depth) = Self::next_depth(left);
         if next_depth == current_depth + 1 {
             //构建左子树
             //取得下一个数字
-            let (mut new_left, val) = Solution::nextVal(new_left);
+            let (mut new_left, val) = Solution::next_val(new_left);
             let n = Rc::new(RefCell::new(TreeNode {
                 left: None,
                 right: None,
@@ -97,7 +97,7 @@ impl Solution {
             return left;
         }
     }
-    fn nextDepth(left: &[u8]) -> (&[u8], usize) {
+    fn next_depth(left: &[u8]) -> (&[u8], usize) {
         if left[0] != '-' as u8 {
             panic!("first must b -");
         }
@@ -113,7 +113,7 @@ impl Solution {
         let (_, left) = left.split_at(cnt);
         return (left, cnt);
     }
-    fn nextVal(left: &[u8]) -> (&[u8], i32) {
+    fn next_val(left: &[u8]) -> (&[u8], i32) {
         if left[0] == '-' as u8 {
             panic!("first must be valid number");
         }

@@ -109,7 +109,7 @@ impl RandomizedSet {
 mod test {
     use super::*;
     #[test]
-    fn test_RandomizedSet() {
+    fn test_randomized_set() {
         let mut s = RandomizedSet::new();
         assert_eq!(true, s.insert(1));
         assert_eq!(false, s.remove(2));
@@ -120,7 +120,7 @@ mod test {
         assert_eq!(2, s.get_random());
     }
     #[test]
-    fn test_RandomizedSet_zero() {
+    fn test_randomized_set_zero() {
         let mut s = RandomizedSet::new();
         assert_eq!(false, s.remove(0));
         assert_eq!(true, s.insert(0));

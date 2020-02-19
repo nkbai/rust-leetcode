@@ -90,11 +90,11 @@ impl Solution {
     */
     //根据pivot位置的数,将left,right之间的数分为两部分
     fn partition(nums: &mut Vec<i32>, left: usize, right: usize, pivot: usize) -> usize {
-        let pivotValue = nums[pivot];
+        let pivot_value = nums[pivot];
         Solution::swap(nums, right, pivot);
         let mut store_index = left;
         for i in left..right {
-            if nums[i] > pivotValue {
+            if nums[i] > pivot_value {
                 //求的是第k大
                 Self::swap(nums, store_index, i);
                 store_index += 1;

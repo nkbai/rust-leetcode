@@ -43,17 +43,17 @@ impl Solution {
         if k <= 0 {
             return num;
         }
-        let mut selPos = 0;
+        let mut sel_pos = 0;
         let bytes = num.as_bytes();
-        let mut selNum = bytes[0];
+        let mut sel_num = bytes[0];
         //移除一个让这个字符串尽可能小的数字
         for i in 1..bytes.len() {
-            if i - selPos == 1 && bytes[i] >= selNum {
-                selPos = i;
-                selNum = bytes[i];
+            if i - sel_pos == 1 && bytes[i] >= sel_num {
+                sel_pos = i;
+                sel_num = bytes[i];
             }
         }
-        num.remove(selPos);
+        num.remove(sel_pos);
         while num.len() > 0 {
             if num.as_bytes()[0] != '0' as u8 {
                 break;

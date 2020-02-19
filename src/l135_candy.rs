@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 /*
 135. 分发糖果
 老师想给孩子们分发糖果，有 N 个孩子站成了一条直线，老师会根据每个孩子的表现，预先给他们评分。
@@ -44,7 +45,7 @@ use std::cmp::{max, Ordering};
 struct Solution {}
 impl Solution {
     pub fn candy(ratings: Vec<i32>) -> i32 {
-        let mut is_up = true; //0表示向上增的趋势,1表示向下的趋势
+        let mut is_up; //0表示向上增的趋势,1表示向下的趋势
         match ratings.len() {
             0 => {
                 return 0;
@@ -70,7 +71,7 @@ impl Solution {
         let mut up_count = 0;
         let mut down_count = 0;
         let mut equals = 0;
-        let mut last = 0;
+        let mut last;
         let mut total = 0;
         if is_up {
             last = 0;
@@ -96,7 +97,7 @@ impl Solution {
                     total += up_count * (up_count - 1) / 2;
                     total += m;
                 }
-                is_up = (order == Ordering::Less);
+                is_up = order == Ordering::Less;
                 if is_up {
                     up_count = 2;
                     down_count = 0;
@@ -142,6 +143,7 @@ impl Solution {
         total += equals; //考虑到最后以相等结尾
         total
     }
+    #[allow(dead_code)]
     fn need_clear() {
         //        let mut a1 = 0;
         //        let mut a2 = 0;

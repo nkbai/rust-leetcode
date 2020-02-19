@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 /*
 122. 买卖股票的最佳时机 II
 
@@ -58,6 +59,7 @@ impl Solution {
         cash
     }
     //按照框架来写的方法
+    #[allow(dead_code)]
     pub fn max_profit2(prices: Vec<i32>) -> i32 {
         if prices.len() <= 0 {
             return 0;

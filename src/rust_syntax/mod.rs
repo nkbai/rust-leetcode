@@ -10,6 +10,7 @@ mod memory_leak;
 mod myown_swap;
 mod nibian;
 mod parking_lot;
+mod pin_test;
 mod refcell;
 mod scoped_threadpool;
 mod test;

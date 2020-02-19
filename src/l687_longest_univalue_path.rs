@@ -56,9 +56,9 @@ impl Solution {
             return (0, 0);
         }
         let r = root.unwrap();
-        let (l0, mut l1) = Self::path(r.borrow().left.clone());
-        let (r0, mut r1) = Self::path(r.borrow().right.clone());
-        let mut c0 = 1;
+        let (l0, l1) = Self::path(r.borrow().left.clone());
+        let (r0, r1) = Self::path(r.borrow().right.clone());
+        let _c0 = 1;
         let mut c1 = 1;
         let mut left = 1;
         let mut right = 1;

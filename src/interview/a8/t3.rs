@@ -7,7 +7,6 @@
 
 */
 use crate::share::ListNode;
-use std::mem::swap;
 
 struct Solution {}
 impl Solution {

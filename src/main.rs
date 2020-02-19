@@ -2,23 +2,18 @@
 #[allow(unused_imports)]
 #[macro_use]
 #[allow(unused)]
+#[allow(unused_variables)]
 extern crate foreign_types;
 
-mod L0001_two_sum;
-mod L0002_add_two_numbers;
-mod L0009_palindrome_number;
-mod L0015_3sum;
-mod L0019_remove_nth_node_from_end_of_list;
-mod L0021_merge_two_sorted_lists;
-mod L0022_generate_parentheses;
-mod L0023_merge_k_sorted_lists;
-mod L0083_delete_duplicates;
-mod L0094_binary_tree_inorder_traversal;
-mod L0203_remove_elements;
-mod L0225_implement_stack_using_queue;
-mod L997_find_the_town_judge;
 mod interview;
+mod l0002_add_two_numbers;
 mod l0006_zigzag_conversion;
+mod l0009_palindrome_number;
+mod l0015_3sum;
+mod l0019_remove_nth_node_from_end_of_list;
+mod l0021_merge_two_sorted_lists;
+mod l0022_generate_parentheses;
+mod l0023_merge_k_sorted_lists;
 mod l0024_swap_nodes_in_pairs;
 mod l0025_reverse_nodes_in_k_group;
 mod l0027_remove_element;
@@ -26,14 +21,18 @@ mod l0047_permutations_2;
 mod l005_longest_palindromic_substring;
 mod l0071_simplify_path;
 mod l0082_remove_duplicates_from_sort;
+mod l0083_delete_duplicates;
 mod l0086_partition_list;
 mod l008_string_to_integer_atoi;
 mod l0091_decode_ways;
 mod l0092_reverse_link_list_2;
+mod l0094_binary_tree_inorder_traversal;
 mod l0095_unique_binary_search_trees;
 mod l0096_unique_binary_search_tree;
 mod l0099_restore_binary_search_tree;
 mod l0145_binary_tree_postorder_traversal;
+mod l0203_remove_elements;
+mod l0225_implement_stack_using_queue;
 mod l029_divide_two_integers;
 mod l0328_odd_even_linked_list;
 mod l032_longest_valid_parentheses;
@@ -80,6 +79,7 @@ mod l146_lru_cach3;
 mod l146_lru_cache;
 mod l146_lru_cache2;
 mod l149_max_points_on_a_line;
+mod l152_maximum_product_subarray;
 mod l155_min_stack;
 mod l166_fraction_to_recurring_decimal;
 mod l173_binary_search_tree_iterator;
@@ -89,6 +89,7 @@ mod l199_binary_tree_right_side_view;
 mod l1_two_sum;
 mod l200_numbers_of_islands;
 mod l206_reverse_linked_list;
+mod l209_minimum_size_subarray_sum;
 mod l215_kth_largest_element_in_an_array;
 mod l220_contains_duplicate_iii;
 mod l222_count_complete_tree_nodes;
@@ -97,6 +98,7 @@ mod l230_kth_smallest_element_in_a_bst;
 mod l232_implement_queue_using_stack;
 mod l257_binary_tree_paths;
 mod l260_single_number_iii;
+mod l287_find_the_duplicate_number;
 mod l288_unique_word_abbreviation;
 mod l290_word_pattern;
 mod l297_serialize_deserialize_binary_tree;
@@ -107,6 +109,8 @@ mod l31_next_permutation;
 mod l329_longest_increasing_path_in_a_matrix;
 mod l337_house_robber_3l;
 mod l343_integer_break;
+mod l365_water_and_jug_problem;
+mod l365_water_and_jug_problem2;
 mod l36_valid_sudoku;
 mod l380_insert_delete_getrandom_o1;
 mod l386_lexicolgraphical_numbers;
@@ -157,6 +161,7 @@ mod l701_insert_into_a_bst;
 mod l704_binary_search;
 mod l713_subarray_product_less_than_k;
 mod l714_best_time_to_buy_and_sell_stocks_with_fee;
+mod l72_edit_distance;
 mod l76_mininum_window_substring;
 mod l78_subsets;
 mod l79_word_search;
@@ -169,12 +174,14 @@ mod l863_all_nodes_distance_k_in_binary_tree;
 mod l865_smallest_subtree_with_all_the_deepest_nodes;
 mod l872_leaf_similiar_trees;
 mod l889_construct_binary_tree_from_preorder_and_postorder_traversal;
+mod l897_increasing_order_search_tree;
 mod l919_complete_binary_tree_inserter;
 mod l925_long_pressed_name;
 mod l958_check_completeness_of_a_binary_tree;
 mod l97_interleaving_string;
 mod l97_interleaving_string_2;
 mod l987_vectical_order_traversal_of_binary_tree;
+mod l997_find_the_town_judge;
 mod queue;
 mod rust_syntax;
 mod share;
@@ -200,7 +207,8 @@ fn main() {
 //refcell?
 
 use std::cell::RefCell;
-fn testRefCell() {
+#[allow(dead_code)]
+fn test_ref_cell() {
     let x = RefCell::new(vec![1, 2, 3]);
     //    let x2 = x.borrow(); //这种形式的borrow就会崩溃,看来宏的作用于可能是一个问题
     println!("{:?} readborrow", x.borrow());
@@ -209,6 +217,7 @@ fn testRefCell() {
 }
 
 use std::borrow::Cow;
+#[allow(dead_code)]
 fn abs_all(input: &mut Cow<[i32]>) {
     for i in 0..input.len() {
         let v = input[i];
@@ -223,6 +232,7 @@ fn abs_all(input: &mut Cow<[i32]>) {
 //    abs_all(input);
 //    input.iter().fold(0, |acc, n| acc + n)
 //}
+#[allow(dead_code)]
 fn testcow() {
     let s1 = [1, -2, 3];
     let mut i1 = Cow::from(&s1[..]);

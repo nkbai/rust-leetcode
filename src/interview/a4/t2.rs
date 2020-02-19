@@ -33,12 +33,14 @@ rand7()调用次数的 期望值 是多少 ?
 use rand::random;
 
 struct Solution {}
+#[allow(dead_code)]
 fn rand7() -> i32 {
     let r: i32 = random();
     r % 7 + 1
 }
 impl Solution {
-    pub fn count_substrings(s: String) -> i32 {
+    #[allow(dead_code)]
+    pub fn count_substrings(_s: String) -> i32 {
         0
     }
 }

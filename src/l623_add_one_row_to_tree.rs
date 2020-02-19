@@ -92,14 +92,14 @@ impl Solution {
         }
         let r = root.unwrap();
         //考虑其他,上一层肯定是有效的
-        let mut currentLayer = Vec::new();
-        currentLayer.push(r.clone());
+        let mut current_layer = Vec::new();
+        current_layer.push(r.clone());
         let mut depth = 1;
-        while !currentLayer.is_empty() {
+        while !current_layer.is_empty() {
             if depth == d - 1 {
                 //题目中严格定义了d的范围,所以不用担心层数无效的问题
                 //找到了要操作的那一层
-                currentLayer.iter().for_each(|t| {
+                current_layer.iter().for_each(|t| {
                     let left = t.borrow_mut().left.take();
                     let right = t.borrow_mut().right.take();
                     t.borrow_mut().left = Some(Rc::new(RefCell::new(TreeNode {
@@ -114,17 +114,17 @@ impl Solution {
                     })));
                 })
             } else {
-                let mut nextLayer = Vec::new();
-                currentLayer.iter().for_each(|t| {
+                let mut next_layer = Vec::new();
+                current_layer.iter().for_each(|t| {
                     //这里不能用map,否则会被优化掉,这里不像h会在访问的过程中被修改,所以适合使用iter而不是while
                     if let Some(l) = t.borrow().left.clone() {
-                        nextLayer.push(l);
+                        next_layer.push(l);
                     }
                     if let Some(r) = t.borrow().right.clone() {
-                        nextLayer.push(r);
+                        next_layer.push(r);
                     }
                 });
-                currentLayer = nextLayer;
+                current_layer = next_layer;
             }
             depth += 1;
         }

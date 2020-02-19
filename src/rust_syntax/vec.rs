@@ -41,7 +41,7 @@ mod test {
         main()
     }
 }
-
+#[allow(dead_code)]
 fn calc_by<'a, F>(var: &'a i32, f: F) -> i32
 where
     F: for<'f> Fn(&'f i32) -> i32,

@@ -33,9 +33,9 @@ https://leetcode-cn.com/problems/divide-two-integers/
 struct Solution {}
 impl Solution {
     pub fn divide(dividend: i32, divisor: i32) -> i32 {
-        let mut isNeg = false;
+        let mut is_neg = false;
         if dividend ^ divisor < 0 {
-            isNeg = true; //符号相反
+            is_neg = true; //符号相反
         }
         let dividend = if dividend < 0 {
             0 - dividend as i64
@@ -53,13 +53,13 @@ impl Solution {
             Solution::divide_internal(dividend as i64, divisor as i64)
         };
         if cnt >= std::i32::MAX as i64 {
-            if isNeg {
+            if is_neg {
                 return std::i32::MIN;
             } else {
                 return std::i32::MAX;
             }
         }
-        if isNeg {
+        if is_neg {
             return (0 - cnt) as i32;
         } else {
             return cnt as i32;

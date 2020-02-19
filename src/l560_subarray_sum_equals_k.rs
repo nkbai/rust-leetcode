@@ -51,7 +51,7 @@ impl Solution {
         if nums.len() == 0 {
             return cnt;
         }
-        let mut last_dec = nums[0];
+        let _last_dec = nums[0];
         for i in 1..nums.len() {
             for j in i..nums.len() {
                 sum[j] -= nums[i - 1];

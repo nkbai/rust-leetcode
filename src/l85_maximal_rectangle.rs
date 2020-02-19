@@ -68,7 +68,7 @@ impl Solution {
         }
         //第一行
         for i in 1..c {
-            let mut last = dp[0][i - 1].left;
+            let last = dp[0][i - 1].left;
             if matrix[0][i] == '1' {
                 dp[0][i] = LeftAndTop {
                     left: last + 1,

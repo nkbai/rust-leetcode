@@ -48,8 +48,6 @@ candidates 中的数字可以无限制重复被选取。
 [2,2,3]允许的,[3,2,3],[2,3,2]都是不允许的
 */
 
-use std::collections::HashMap;
-
 struct Solution;
 impl Solution {
     pub fn combination_sum(candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {

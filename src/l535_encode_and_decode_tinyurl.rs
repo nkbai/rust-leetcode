@@ -30,7 +30,7 @@ impl Solution {
                 .into(),
         }
     }
-    fn getKey(&self) -> String {
+    fn get_key(&self) -> String {
         let mut s = Vec::new();
         for _ in 0..6 {
             let mut x: usize = rand::random();
@@ -40,9 +40,9 @@ impl Solution {
         unsafe { String::from_utf8_unchecked(s) }
     }
     pub fn encode(&mut self, long_url: String) -> String {
-        let mut key = self.getKey();
+        let mut key = self.get_key();
         while self.m.contains_key(&key) {
-            key = self.getKey();
+            key = self.get_key();
         }
         self.m.insert(key.clone(), long_url);
         return key;

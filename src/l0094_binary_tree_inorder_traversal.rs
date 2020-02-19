@@ -77,7 +77,7 @@ impl Solution {
         比如,传递进来3,
         那么就会压栈[3,1,0]
         */
-    fn pushNodes(mut root: Option<Rc<RefCell<TreeNode>>>, stack: &mut Vec<Rc<RefCell<TreeNode>>>) {
+    fn push_nodes(mut root: Option<Rc<RefCell<TreeNode>>>, stack: &mut Vec<Rc<RefCell<TreeNode>>>) {
         while let Some(r) = root {
             stack.push(r.clone());
             root = r.borrow().left.clone();
@@ -90,14 +90,14 @@ impl Solution {
     */
     fn inorder_non_recursive(root: Option<Rc<RefCell<TreeNode>>>, v: &mut Vec<i32>) {
         let mut nodes = Vec::new();
-        Solution::pushNodes(root, &mut nodes);
+        Solution::push_nodes(root, &mut nodes);
         //while let 显然更rust
         while let Some(n) = nodes.pop() {
             v.push(n.borrow().val);
             /*
             压栈右子树,如果有的话
             */
-            Solution::pushNodes(n.borrow().right.clone(), &mut nodes);
+            Solution::push_nodes(n.borrow().right.clone(), &mut nodes);
         }
         return;
     }

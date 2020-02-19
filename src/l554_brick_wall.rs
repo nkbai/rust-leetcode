@@ -54,7 +54,7 @@ struct Solution {}
 impl Solution {
     pub fn least_bricks(wall: Vec<Vec<i32>>) -> i32 {
         let mut m = HashMap::new();
-        let mut sum = 0;
+        let mut sum;
         let mut max_count = 0;
         let row_count = wall.len() as i32;
         for row in wall {
@@ -62,8 +62,8 @@ impl Solution {
             //不能计算最后一列
             for col in 0..row.len() - 1 {
                 sum += row[col];
-                let mut cnt = 0;
-                let mut v = m.get_mut(&sum);
+                let cnt;
+                let v = m.get_mut(&sum);
                 match v {
                     None => {
                         m.insert(sum, 1);

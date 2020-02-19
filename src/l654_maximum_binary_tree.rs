@@ -52,18 +52,18 @@ impl Solution {
         if nums.len() == 0 {
             return None;
         }
-        let mut MaxPos: i32 = -1;
-        let mut Max = std::i32::MIN; //如果
+        let mut max_pos: i32 = -1;
+        let mut max_value = std::i32::MIN; //如果
         nums.iter().enumerate().for_each(|v| {
-            if *v.1 > Max {
-                MaxPos = v.0 as i32;
-                Max = *v.1;
+            if *v.1 > max_value {
+                max_pos = v.0 as i32;
+                max_value = *v.1;
             }
         });
-        if MaxPos == -1 {
-            MaxPos = 0; //全是std::i32::MIN?
+        if max_pos == -1 {
+            max_pos = 0; //全是std::i32::MIN?
         }
-        let (left, right) = nums.split_at(MaxPos as usize);
+        let (left, right) = nums.split_at(max_pos as usize);
         let (r1, r2) = right.split_at(1); //右边肯定会有一个数值
         let root = Some(Rc::new(RefCell::new(TreeNode {
             val: r1[0],

@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 /*
 622. 设计循环队列
 https://leetcode-cn.com/problems/design-circular-queue/
@@ -73,6 +74,7 @@ struct MyCircularQueue {
  */
 impl MyCircularQueue {
     /** Initialize your data structure here. Set the size of the queue to be k. */
+    #[allow(dead_code)]
     fn new(k: i32) -> Self {
         MyCircularQueue {
             v: vec![0; k as usize],
@@ -82,6 +84,7 @@ impl MyCircularQueue {
     }
 
     /** Insert an element into the circular queue. Return true if the operation is successful. */
+    #[allow(dead_code)]
     fn en_queue(&mut self, value: i32) -> bool {
         if self.is_full() {
             return false;
@@ -101,6 +104,7 @@ impl MyCircularQueue {
     }
 
     /** Delete an element from the circular queue. Return true if the operation is successful. 从前往后删 */
+    #[allow(dead_code)]
     fn de_queue(&mut self) -> bool {
         if self.is_empty() {
             return false;
@@ -117,6 +121,7 @@ impl MyCircularQueue {
     }
 
     /** Get the front item from the queue. */
+    #[allow(dead_code)]
     fn front(&self) -> i32 {
         if self.is_empty() {
             return -1;
@@ -125,6 +130,7 @@ impl MyCircularQueue {
     }
 
     /** Get the last item from the queue. */
+    #[allow(dead_code)]
     fn rear(&self) -> i32 {
         if self.is_empty() {
             return -1;
@@ -137,11 +143,13 @@ impl MyCircularQueue {
     }
 
     /** Checks whether the circular queue is empty or not. */
+    #[allow(dead_code)]
     fn is_empty(&self) -> bool {
         return self.head == -1 && self.tail == -1;
     }
 
     /** Checks whether the circular queue is full or not. */
+    #[allow(dead_code)]
     fn is_full(&self) -> bool {
         return self.head == self.tail && self.tail != -1;
     }

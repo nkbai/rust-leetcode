@@ -21,9 +21,7 @@ value是这个数前面连续的数字和后面连续的数字
 我们更新的时候,这样我们更新的时候只用更新最左边和最右边的数, 这些个数都包含自己
 Hashmap的查询是O(1),因此时间复杂度是O(N)
 */
-use std::collections::hash_map::Entry;
 use std::collections::HashMap;
-use std::hash::Hash;
 
 struct Solution {}
 impl Solution {
@@ -31,7 +29,7 @@ impl Solution {
         let mut m: HashMap<i32, (i32, i32)> = HashMap::new();
         let mut max_seq = 0;
         for v in nums {
-            let mut e = m.get_mut(&v);
+            let e = m.get_mut(&v);
             if e.is_some() {
                 continue;
             }
@@ -64,7 +62,6 @@ impl Solution {
 mod test {
     #[warn(unused_imports)]
     use super::*;
-    use crate::share::build_tree;
     #[test]
     fn test_generate() {
         assert_eq!(4, Solution::longest_consecutive(vec![100, 4, 200, 1, 3, 2]));

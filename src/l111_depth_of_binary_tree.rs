@@ -34,19 +34,19 @@ struct Solution {}
 impl Solution {
     pub fn min_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         if let Some(r) = root {
-            let hasLeft = r.borrow().left.is_some();
-            let hasRight = r.borrow().right.is_some();
+            let has_left = r.borrow().left.is_some();
+            let has_right = r.borrow().right.is_some();
             let left = Solution::min_depth(r.borrow_mut().left.take());
             let right = Solution::min_depth(r.borrow_mut().right.take());
-            if hasLeft && hasRight {
+            if has_left && has_right {
                 if left > right {
                     return right + 1;
                 } else {
                     return left + 1;
                 }
-            } else if hasLeft {
+            } else if has_left {
                 return left + 1;
-            } else if hasRight {
+            } else if has_right {
                 return right + 1;
             } else {
                 return 1;

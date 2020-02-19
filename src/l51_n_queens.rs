@@ -40,10 +40,10 @@ impl Solution {
     pub fn solve_n_queens(n: i32) -> Vec<Vec<String>> {
         let mut matrix = Vec::new();
         let mut col = Vec::new();
-        for i in 0..n {
+        for _i in 0..n {
             let mut v = Vec::new();
             col.push(false);
-            for j in 0..n {
+            for _j in 0..n {
                 v.push(0);
             }
             matrix.push(v);
@@ -72,7 +72,7 @@ impl Solution {
         //想左下检查对角线
         let mut r = row;
         let mut c = col;
-        let mut found = false;
+        let _found = false;
         loop {
             if matrix[r][c] == 1 {
                 return true;
@@ -86,7 +86,7 @@ impl Solution {
         //左上检查对角线
         let mut r = row;
         let mut c = col;
-        let mut found = false;
+        let _found = false;
         loop {
             if matrix[r][c] == 1 {
                 return true;
@@ -100,7 +100,7 @@ impl Solution {
         //右下检查对角线
         let mut r = row;
         let mut c = col;
-        let mut found = false;
+        let _found = false;
         loop {
             if matrix[r][c] == 1 {
                 return true;

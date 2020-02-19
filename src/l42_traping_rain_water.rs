@@ -48,8 +48,8 @@ impl Solution {
              */
             while top.0 <= c.0 {
                 //只要不是递减栈,一直弹出,并计算
-                let mut yu = 0;
-                let mut zhu = 0;
+                let mut yu;
+                let zhu;
                 yu = (i as i32 - top.1 as i32) * top.0;
                 zhu = top.0 + c.3;
                 yu -= zhu;

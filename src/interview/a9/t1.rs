@@ -38,12 +38,14 @@ s: "abab" p: "ab"
 struct Solution {}
 
 impl Solution {
-    pub fn find_anagrams(s: String, p: String) -> Vec<i32> {
+    #[allow(dead_code)]
+    pub fn find_anagrams(_s: String, _p: String) -> Vec<i32> {
         Vec::new()
     }
 }
 #[cfg(test)]
 mod test {
+    #![allow(unused_imports, dead_code)]
     use super::*;
 
     #[test]

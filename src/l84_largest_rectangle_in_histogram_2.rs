@@ -85,7 +85,7 @@ impl Solution {
         //最后检查一下站内是否还有剩余
         while stack.len() > 1 {
             //a[stack[top]]*(a.len()-stack[top-1]-1)
-            let mut top = *stack.last().expect("must have one") as usize;
+            let top = *stack.last().expect("must have one") as usize;
             let area = heights[top] * (heights.len() as i32 - Self::top_minus_1(&stack) - 1);
             max_area = max(max_area, area);
             stack.pop();

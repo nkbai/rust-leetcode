@@ -1,5 +1,7 @@
+#[allow(dead_code)]
 use std::panic;
 use std::panic::AssertUnwindSafe;
+#[allow(dead_code)]
 fn catch_unwind() {
     let mut x: Vec<i32> = vec![1];
     let mut y: Vec<i32> = vec![2];

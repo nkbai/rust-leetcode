@@ -51,9 +51,9 @@ use std::rc::Rc;
 
 struct Solution {}
 impl Solution {
-    pub fn distance_k(root: Option<Rc<RefCell<TreeNode>>>, target: i32, K: i32) -> Vec<i32> {
+    pub fn distance_k(root: Option<Rc<RefCell<TreeNode>>>, target: i32, k: i32) -> Vec<i32> {
         let mut h = HashSet::new();
-        Self::internal(root, target, K, -1, &mut h, &mut false);
+        Self::internal(root, target, k, -1, &mut h, &mut false);
         h.iter().map(|n| *n).collect()
     }
     fn internal(

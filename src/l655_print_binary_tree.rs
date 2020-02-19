@@ -94,7 +94,7 @@ impl Solution {
             this_level.push(String::from(""))
         }
         result.push(this_level);
-        let (leftNode, rightNode) = if root.is_none() {
+        let (left_node, right_node) = if root.is_none() {
             (None, None)
         } else {
             (
@@ -102,8 +102,8 @@ impl Solution {
                 root.clone().unwrap().borrow().right.clone(),
             )
         };
-        let left = Self::print_tree_internal(leftNode, height - 1);
-        let right = Self::print_tree_internal(rightNode, height - 1);
+        let left = Self::print_tree_internal(left_node, height - 1);
+        let right = Self::print_tree_internal(right_node, height - 1);
         //将左右拼接起来,保证宽度
         for i in 0..left.len() {
             let mut v = Vec::new();

@@ -42,7 +42,7 @@ impl Solution {
         let mut v = Vec::new();
         v.push(root.unwrap().clone());
         h.push(v);
-        let mut isReverse = false;
+        let mut is_reverse = false;
         while !h.is_empty() {
             let mut vr = Vec::new();
             let vh = h.remove(0); //移除第一个
@@ -51,7 +51,7 @@ impl Solution {
             vh.iter().rev().for_each(|t| {
                 //这里不能用map,否则会被优化掉,这里不像h会在访问的过程中被修改,所以适合使用iter而不是while
                 vr.push(t.borrow().val);
-                if isReverse {
+                if is_reverse {
                     if let Some(r) = t.borrow().right.clone() {
                         vh2.push(r)
                     }
@@ -71,7 +71,7 @@ impl Solution {
                 h.push(vh2);
             }
             r.push(vr);
-            isReverse = !isReverse;
+            is_reverse = !is_reverse;
         }
         r
     }

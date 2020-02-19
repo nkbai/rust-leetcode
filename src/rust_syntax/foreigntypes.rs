@@ -1,3 +1,5 @@
+#[allow(dead_code)]
+#[allow(unused_attributes)]
 #[macro_use]
 use foreign_types::ForeignTypeRef;
 
@@ -27,10 +29,11 @@ foreign_type! {
 }
 
 impl BarRef {
+    #[allow(dead_code)]
     fn foo(&self) -> &FooRef {
         unsafe { FooRef::from_ptr(foo_sys::BAR_get_foo(self.as_ptr())) }
     }
-
+    #[allow(dead_code)]
     fn foo_mut(&mut self) -> &mut FooRef {
         unsafe { FooRef::from_ptr_mut(foo_sys::BAR_get_foo(self.as_ptr())) }
     }

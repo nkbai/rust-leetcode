@@ -40,7 +40,7 @@ impl Solution {
         let mut n = head.as_mut();
         while n.is_some() {
             i += 1;
-            let mut n2 = n.unwrap();
+            let n2 = n.unwrap();
             //            println!("n2={},i={},cnt={},right={}", n2.val, i, cnt, right);
             if i >= cnt - right {
                 let n3 = n2.next.take();
@@ -56,10 +56,10 @@ impl Solution {
         }
         //        println!("head={:?}\n,v={:?}", head, v);
         let mut n = head.as_mut();
-        let mut i = 0;
+        let _i = 0;
         while v.len() > 0 && n.is_some() {
             let mut n2 = n.unwrap();
-            let mut n3 = n2.next.take();
+            let n3 = n2.next.take();
             let mut vi = v.pop().unwrap();
             vi.as_mut().unwrap().next = n3;
             n2.next = vi;

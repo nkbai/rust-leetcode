@@ -74,10 +74,10 @@ impl Term {
             expect: 0,
         }
     }
-    fn incCount(&mut self) {
+    fn inc_count(&mut self) {
         self.count += 1;
     }
-    fn incExpect(&mut self) -> ExpectResult {
+    fn inc_expect(&mut self) -> ExpectResult {
         self.expect += 1;
         if self.count > self.expect {
             return ExpectResult::Less;
@@ -93,6 +93,7 @@ impl Term {
     fn reset(&mut self) {
         self.expect = 0;
     }
+    #[allow(dead_code)]
     fn is_match(&self) -> bool {
         return self.count == self.expect;
     }
@@ -107,7 +108,7 @@ impl Solution {
         let mut last_count = 0;
 
         for b in p {
-            m.entry(b).or_insert(Term::new()).incCount();
+            m.entry(b).or_insert(Term::new()).inc_count();
         }
         fn reset(m: &mut HashMap<&u8, Term>, last_count: &mut i32) {
             *last_count = 0;
@@ -141,7 +142,7 @@ impl Solution {
                             }
                             Some(e) => {
                                 cnt += 1;
-                                let r = e.incExpect();
+                                let r = e.inc_expect();
                                 //总数匹配了,并且最近一次数量刚好相等,说明找到了一个完整匹配
                                 if r == ExpectResult::Greater {
                                     //有一个字符多了,从下一个开始匹配
@@ -176,30 +177,31 @@ impl Solution {
     1. p中的是一个个字符而不是字符串,所以不需要用map,直接用数组就ok了
     2. 既然是固定长度,那么每次全检查一遍,代价也很小,而我的解法为了避免重复检查,让下标不连续,导致代码无谓的复杂了.
     */
+    #[allow(dead_code)]
     pub fn find_anagrams2(s: String, p: String) -> Vec<i32> {
         if s.len() < p.len() {
             return vec![];
         }
-        let N = p.len();
+        let n = p.len();
         let mut map = [0; 26];
         let index_ch = |ch: char| ch as usize - 97;
         for ch in p.chars() {
             map[index_ch(ch)] += 1;
         }
-        for ch in s.chars().take(N) {
+        for ch in s.chars().take(n) {
             map[index_ch(ch)] -= 1;
         }
         let mut ans = vec![];
         let schars: Vec<char> = s.chars().collect();
-        for i in 0..(s.len() - N) {
+        for i in 0..(s.len() - n) {
             if map.iter().all(|x| *x == 0) {
                 ans.push(i as i32);
             }
             map[index_ch(schars[i])] += 1;
-            map[index_ch(schars[i + N])] -= 1;
+            map[index_ch(schars[i + n])] -= 1;
         }
         if map.iter().all(|x| *x == 0) {
-            ans.push((s.len() - N) as i32);
+            ans.push((s.len() - n) as i32);
         }
         ans
     }

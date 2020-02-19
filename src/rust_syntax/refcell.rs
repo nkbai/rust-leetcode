@@ -54,7 +54,7 @@ where
     let u: &Table<'short> = t; //内容错误是因为对这里的生命周期无法验证,普通只读共享情况下,'long 复制给'short是没有任何问题的,但是因为有内部可变性,导致了问题
     u.cell.set(s);
 }
-
+#[allow(dead_code)]
 fn evil2<'long, 'short>(_t: &mut Table<'long>, _s: &'short isize)
 where
     'long: 'short,

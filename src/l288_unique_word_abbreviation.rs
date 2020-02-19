@@ -54,7 +54,7 @@ impl ValidWordAbbr {
     fn new(dictionary: Vec<String>) -> Self {
         let mut m = HashMap::new();
         let mut dup = HashMap::new();
-        let mut dictionary = dictionary;
+        let dictionary = dictionary;
         for s in dictionary {
             let e = dup.entry(s.clone()).or_insert(false);
             if *e {

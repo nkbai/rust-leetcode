@@ -35,8 +35,6 @@ impl Solution {
         nums[j] = t;
     }
     pub fn next_permutation(nums: &mut Vec<i32>) {
-        let mut pos = -1;
-        let mut down_found = false;
         let l = nums.len();
         //长度1,2的情况特殊处理一下
         match nums.len() {
@@ -102,7 +100,7 @@ mod test {
         //        let t = Solution::next_permutation(&mut v);
         //        assert_eq!(v, vec![1, 2, 3]);
         let mut v = vec![6, 3, 5, 4, 2, 1];
-        let t = Solution::next_permutation(&mut v);
+        let _t = Solution::next_permutation(&mut v);
         assert_eq!(v, vec![6, 4, 1, 2, 3, 5]);
     }
 }

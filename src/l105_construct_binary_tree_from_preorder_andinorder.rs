@@ -60,8 +60,8 @@ impl Solution {
         if preorder.len() == 0 {
             return None;
         }
-        let (root, leftRight) = preorder.split_first().expect("must have one element");
-        let rootNode = Rc::new(RefCell::new(TreeNode::new(*root)));
+        let (root, left_right) = preorder.split_first().expect("must have one element");
+        let root_node = Rc::new(RefCell::new(TreeNode::new(*root)));
         let mut mid = -1;
         //在中序遍历中找root
         for i in 0..inorder.len() {
@@ -73,19 +73,20 @@ impl Solution {
         if mid == -1 {
             panic!("data wrong")
         }
-        let (inorderLeft, inOrderRightContainsMid) = inorder.split_at(mid as usize);
-        let (_, inOrderRight) = inOrderRightContainsMid
+        let (inorder_left, in_order_right_contains_mid) = inorder.split_at(mid as usize);
+        let (_, in_order_right) = in_order_right_contains_mid
             .split_first()
             .expect("must have one element"); //剔除根节点
-        let (preOrderLeft, preorderRight) = leftRight.split_at(inorderLeft.len());
+        let (pre_order_left, preorder_right) = left_right.split_at(inorder_left.len());
         //        println!(
-        //            "root={},preOrderLeft={:?},preorderRight={:?},inorderLeft={:?},inorderRight={:?}",
-        //            root, preOrderLeft, preorderRight, inorderLeft, inOrderRight
+        //            "root={},pre_order_left={:?},preorder_right={:?},inorder_left={:?},inorderRight={:?}",
+        //            root, pre_order_left, preorder_right, inorder_left, in_order_right
         //        );
-        rootNode.borrow_mut().left = Solution::build_tree_internal(preOrderLeft, inorderLeft);
-        rootNode.borrow_mut().right = Solution::build_tree_internal(preorderRight, inOrderRight);
-        //        println!("rootNode={:?}", rootNode);
-        return Some(rootNode);
+        root_node.borrow_mut().left = Solution::build_tree_internal(pre_order_left, inorder_left);
+        root_node.borrow_mut().right =
+            Solution::build_tree_internal(preorder_right, in_order_right);
+        //        println!("root_node={:?}", root_node);
+        return Some(root_node);
     }
 }
 #[cfg(test)]

@@ -98,7 +98,7 @@ impl Solution {
                 //极端情况下,整体复杂度论文O(N^3)而不是O(N^2)
                 let k = (k * 100000.0) as i64;
                 let e = m.get_mut(&k);
-                let mut cnt = 0;
+                let cnt;
                 match e {
                     None => {
                         m.insert(k, 2);

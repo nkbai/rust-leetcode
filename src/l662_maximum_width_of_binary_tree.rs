@@ -81,7 +81,7 @@ impl Solution {
         while current_level.len() > 0 {
             let mut start = -1;
             let mut end = -1;
-            let mut lastNotNone = 0;
+            let mut last_not_none = 0;
             let mut next_level = Vec::new();
             current_level.iter().enumerate().for_each(|r| {
                 match r.1 {
@@ -97,7 +97,7 @@ impl Solution {
                             start = r.0 as i32
                         }
                         end = r.0 as i32;
-                        lastNotNone = r.0 * 2 + 1;
+                        last_not_none = r.0 * 2 + 1;
                         next_level.push(n.borrow().left.clone());
                         next_level.push(n.borrow().right.clone());
                     }
@@ -109,14 +109,14 @@ impl Solution {
                     max_width = w;
                 }
                 //对右侧裁剪一下,因为end 以后的null值也不会影响下一层的width计算
-                let (left, _) = next_level.split_at(min(lastNotNone + 1, next_level.len()));
+                let (left, _) = next_level.split_at(min(last_not_none + 1, next_level.len()));
                 //                println!(
-                //                    "start={},end={},current w={},nodes count={},lastNotNone={}",
+                //                    "start={},end={},current w={},nodes count={},last_not_none={}",
                 //                    start,
                 //                    end,
                 //                    w,
                 //                    left.len(),
-                //                    lastNotNone,
+                //                    last_not_none,
                 //                );
                 current_level = Vec::from(left);
             } else {

@@ -64,7 +64,7 @@ impl Solution {
         for i in 0..forest.len() {
             for j in 0..forest[0].len() {
                 if forest[i][j] > 1 {
-                    let mut n = Node::new(forest[i][j], i, j);
+                    let n = Node::new(forest[i][j], i, j);
                     m.insert(n.val, n);
                 }
             }

@@ -44,7 +44,6 @@
      因此返回 INT_MIN (−231)
  */
 
-
 struct Solution {}
 impl Solution {
     pub fn my_atoi(str: String) -> i32 {
@@ -53,55 +52,55 @@ impl Solution {
 
         //最终结果
         let mut result: i32 = 0;
-        let mut signNagative: bool = false;
-        let mut firstZero = true;
-        let mut firstSign=true;
-        let mut stripSpace=true;
+        let mut sign_nagative: bool = false;
+        let mut first_zero = true;
+        let mut first_sign = true;
+        let mut strip_space = true;
         if s.len() <= 0 {
             return 0;
         }
-        println!("str={}",str);
+        println!("str={}", str);
         for i in 0..s.len() {
-            if stripSpace && s[i]==' ' as u8 {
+            if strip_space && s[i] == ' ' as u8 {
                 continue; //跳过开始的空白
             }
-            stripSpace=false;
-            if firstSign  { //处理第一个符号或者数字
-                let temp=s[i] as char;
+            strip_space = false;
+            if first_sign {
+                //处理第一个符号或者数字
+                let temp = s[i] as char;
                 match temp {
-                    '-' => signNagative=true,
-                    '+' => signNagative=false,
-                    n if n>='0' && n<='9' => result=temp  as i32 -'0' as i32,
-                    _=>return 0
+                    '-' => sign_nagative = true,
+                    '+' => sign_nagative = false,
+                    n if n >= '0' && n <= '9' => result = temp as i32 - '0' as i32,
+                    _ => return 0,
                 }
-                firstSign=false;
-                firstZero=result==0; //如果是0，表示后面还可以继续是0，不算数
-                continue
+                first_sign = false;
+                first_zero = result == 0; //如果是0，表示后面还可以继续是0，不算数
+                continue;
             }
-            if firstZero && s[i] == '0' as u8 {
+            if first_zero && s[i] == '0' as u8 {
                 continue; //跳过开始的0 -001
             }
-            firstZero=false;
-            if s[i]>'9' as u8 || s[i]<'0' as u8{
-                return result ;
+            first_zero = false;
+            if s[i] > '9' as u8 || s[i] < '0' as u8 {
+                return result;
             }
 
-            let pos=match signNagative{
-                true=>('0' as i32)-s[i]  as i32  ,
-                false=>s[i] as i32  -( '0' as  i32 ) ,
+            let pos = match sign_nagative {
+                true => ('0' as i32) - s[i] as i32,
+                false => s[i] as i32 - ('0' as i32),
             };
 
-                let new = result as i64 * 10 + pos as  i64 ;
-                //向上溢出
-                if new > core::i32::MAX as i64 {
-                    return core::i32::MAX;
-                } else if new < core::i32::MIN as i64{
-                    //向下溢出
-                    return core::i32::MIN;
-                } else {
-                    result = new as i32 ;
-                }
-
+            let new = result as i64 * 10 + pos as i64;
+            //向上溢出
+            if new > core::i32::MAX as i64 {
+                return core::i32::MAX;
+            } else if new < core::i32::MIN as i64 {
+                //向下溢出
+                return core::i32::MIN;
+            } else {
+                result = new as i32;
+            }
         }
         result
     }

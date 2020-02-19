@@ -74,7 +74,7 @@ impl Solution {
         if prices.len() == 0 {
             return 0;
         }
-        let mut k = 2;
+        let k = 2;
         let prices = Self::remove_inscrease_order(prices);
         let mut dp = vec![vec![0; 2]; k];
         println!("k={},priceslen={}", k, prices.len());

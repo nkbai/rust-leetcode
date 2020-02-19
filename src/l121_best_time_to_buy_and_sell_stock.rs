@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 /*
 121. 买卖股票的最佳时机
 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
@@ -25,6 +26,7 @@
 struct Solution {}
 use std::cmp::max;
 impl Solution {
+    #[allow(dead_code)]
     pub fn max_profit(prices: Vec<i32>) -> i32 {
         if prices.len() <= 0 {
             return 0;

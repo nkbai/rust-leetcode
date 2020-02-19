@@ -34,15 +34,17 @@ struct Solution {}
 use std::cmp::max;
 
 impl Solution {
+    #[allow(dead_code)]
     pub fn max_profit(prices: Vec<i32>, fee: i32) -> i32 {
-        let mut prices = prices.as_slice();
+        let prices = prices.as_slice();
         let mut v = Vec::new();
         return Self::profit(prices, fee, &mut v);
     }
+    #[allow(dead_code)]
     fn profit(mut prices: &[i32], fee: i32, v: &mut Vec<i32>) -> i32 {
         // println!("prices={:?},v={:?}", prices, v);
-        let mut max_profit = 0;
-        let mut profit = 0;
+        let mut _max_profit = 0;
+        let mut _profit = 0;
         for i in 0..prices.len() {
             let cur = prices[i];
             if v.len() == 0 {
@@ -91,6 +93,7 @@ impl Solution {
 }
 #[cfg(test)]
 mod test {
+    #![allow(unused_imports, dead_code)]
     use super::*;
 
     #[test]

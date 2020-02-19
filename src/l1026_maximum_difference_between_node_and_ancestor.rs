@@ -64,12 +64,12 @@ struct Solution;
 
 impl Solution {
     pub fn max_ancestor_diff(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-        let mut maxVal = 0; //最小的情况是自己和自己比,是0
-        Self::max_internal(root, &mut maxVal);
-        return maxVal;
+        let mut max_val = 0; //最小的情况是自己和自己比,是0
+        Self::max_internal(root, &mut max_val);
+        return max_val;
     }
     //返回值第一个是最大值,第二个是最小值,注意不计算绝对值
-    fn max_internal(root: Option<Rc<RefCell<TreeNode>>>, maxVal: &mut i32) -> (i32, i32) {
+    fn max_internal(root: Option<Rc<RefCell<TreeNode>>>, max_val: &mut i32) -> (i32, i32) {
         if root.is_none() {
             return (0, 0);
         }
@@ -81,7 +81,7 @@ impl Solution {
         let mut f = |l: Rc<RefCell<TreeNode>>| {
             let mut lv = l.borrow().val;
             lv = val - lv;
-            let (mut lmax, mut lmin) = Self::max_internal(Some(l.clone()), maxVal);
+            let (mut lmax, mut lmin) = Self::max_internal(Some(l.clone()), max_val);
             lmax = lv + lmax;
             lmin = lv + lmin;
             if lmax > cmax {
@@ -107,10 +107,13 @@ impl Solution {
             m2 = -cmin;
         }
         let this_max = max(m1, m2);
-        if *maxVal < this_max {
-            *maxVal = this_max;
+        if *max_val < this_max {
+            *max_val = this_max;
         }
-        println!("val={},cmax={},cmin={},maxVal={}", val, cmax, cmin, maxVal);
+        println!(
+            "val={},cmax={},cmin={},max_val={}",
+            val, cmax, cmin, max_val
+        );
         return (cmax, cmin);
     }
 }

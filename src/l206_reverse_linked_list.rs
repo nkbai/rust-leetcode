@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 use crate::share::ListNode;
 struct Solution {}
 
@@ -5,7 +6,7 @@ impl Solution {
     pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         let result = None;
         //        Solution::reverseListRecursive(head, result)
-        Solution::reverseListFor(head, result)
+        Solution::reverse_list_for(head, result)
     }
     //    fn reverse_internal(head: &mut Option<Box<ListNode>>) -> retHelp {
     //        if head.is_none() {
@@ -34,7 +35,8 @@ impl Solution {
     //        println!("return :{:?}", newhead);
     //        &mut newhead.as_ref().unwrap().next
     //    }
-    fn reverseListRecursive(
+    #[allow(dead_code)]
+    fn reverse_list_recursive(
         list: Option<Box<ListNode>>,
         result: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
@@ -44,12 +46,12 @@ impl Solution {
                     val: val.val, //通过复制Node的方式而不是我做的那种原地替换的方式
                     next: result,
                 }));
-                Solution::reverseListRecursive(val.next, result)
+                Solution::reverse_list_recursive(val.next, result)
             }
             None => result,
         }
     }
-    fn reverseListFor(
+    fn reverse_list_for(
         head: Option<Box<ListNode>>,
         result: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {

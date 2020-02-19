@@ -54,9 +54,10 @@ struct Solution {}
 #[derive(Debug, PartialEq, Eq, Clone)]
 struct Node {
     val: i32,
-    Nodes: Vec<Node>,
+    nodes: Vec<Node>,
 }
 impl Solution {
+    #[allow(dead_code)]
     pub fn sum_of_distances_in_tree(_n: i32, _edges: Vec<Vec<i32>>) -> Vec<i32> {
         Vec::new()
     }
@@ -68,19 +69,19 @@ impl Solution {
         let last_val = edges[0][0];
         let mut root = Node {
             val: last_val,
-            Nodes: Vec::new(),
+            nodes: Vec::new(),
         };
-        let lastNode = &mut root;
+        let last_node = &mut root;
         while edges.len() > 0 {
             while edges.len() > 0 && edges[0][0] == last_val {
-                lastNode.Nodes.push(Node {
+                last_node.nodes.push(Node {
                     val: edges[0][1],
-                    Nodes: Vec::new(),
+                    nodes: Vec::new(),
                 });
                 edges.remove(0);
             }
             if edges.len() > 0 {
-                let pos = lastNode.Nodes.iter().position(|n| n.val == last_val);
+                let pos = last_node.nodes.iter().position(|n| n.val == last_val);
                 if pos.is_none() {
                     panic!("not found");
                 }

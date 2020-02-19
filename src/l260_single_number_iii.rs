@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 /*
 260. 只出现一次的数字 III
 给定一个整数数组 nums，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。
@@ -27,12 +28,14 @@
 
 struct Solution {}
 impl Solution {
-    pub fn single_number(nums: Vec<i32>) -> Vec<i32> {
+    #[allow(dead_code)]
+    pub fn single_number(_nums: Vec<i32>) -> Vec<i32> {
         panic!("想不明白,这种小技巧还是放弃吧");
     }
 }
 #[cfg(test)]
 mod test {
+    #![allow(unused_imports, dead_code)]
     use super::*;
     #[test]
     fn test() {}

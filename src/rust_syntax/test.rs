@@ -25,6 +25,7 @@ impl AveragedCollection {
         } //外部方法对外接口 不能直接给外部的就不能给外部操作 否则符合接口
     }
     //4个成员函数  前三个对外操作
+    #[allow(dead_code)]
     pub fn average(&self) -> f64 {
         //成员变量得用成员函数访问
         self.average //成员函数可访问内部变量 外部数据不可直接操作变量
@@ -69,7 +70,6 @@ mod tests {
         ac.remove(); //判断remove
         assert_eq!(ac.remove(), None);
     } // 1,2,3 得6       求这4个平均值
-
 }
 // RUST 是面向对象的语言
 // git  cargo test
