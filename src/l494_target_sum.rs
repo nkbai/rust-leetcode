@@ -86,7 +86,7 @@ impl Solution {
                     dp[j] = 0; //考虑到n为0这种特殊情况
                 }
             }
-            for j in (0..2 * max_sum) {
+            for j in 0..2 * max_sum {
                 if dp2[j] == 0 {
                     continue;
                 }

@@ -5,6 +5,7 @@
 #[allow(unused_variables)]
 extern crate foreign_types;
 
+mod a1_template;
 mod interview;
 mod l0002_add_two_numbers;
 mod l0006_zigzag_conversion;
@@ -89,6 +90,7 @@ mod l199_binary_tree_right_side_view;
 mod l1_two_sum;
 mod l200_numbers_of_islands;
 mod l206_reverse_linked_list;
+mod l207_course_schedule;
 mod l209_minimum_size_subarray_sum;
 mod l215_kth_largest_element_in_an_array;
 mod l220_contains_duplicate_iii;
@@ -99,6 +101,7 @@ mod l232_implement_queue_using_stack;
 mod l257_binary_tree_paths;
 mod l260_single_number_iii;
 mod l287_find_the_duplicate_number;
+mod l287_find_the_duplicate_number2;
 mod l288_unique_word_abbreviation;
 mod l290_word_pattern;
 mod l297_serialize_deserialize_binary_tree;
@@ -166,6 +169,7 @@ mod l72_edit_distance;
 mod l76_mininum_window_substring;
 mod l78_subsets;
 mod l79_word_search;
+mod l80_remove_duplicates_from_sorted_array_2;
 mod l814_binary_tree_pruning;
 mod l834_sum_of_distances_in_tree;
 mod l84_largest_rectangle_in_histogram;
@@ -188,7 +192,6 @@ mod rust_syntax;
 mod share;
 mod shortestpath;
 mod stack;
-mod template;
 fn test(y: &str) -> &str {
     y
 }
