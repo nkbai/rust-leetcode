@@ -1,3 +1,4 @@
+mod borrow_trait;
 mod catch_unwind;
 mod crossbeam;
 mod dynmod;
