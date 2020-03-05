@@ -75,7 +75,7 @@ impl DSU {
             return false;
         }
         //注意这里是设置的是prex的parent,而不是x的parent
-        self.pre[prex as usize] = y;
+        self.pre[prex as usize] = prey;
         return true;
     }
 }
